@@ -1,0 +1,20 @@
+[project]
+name = "arya-agent"
+version = "0.1.0"
+description = "AI Tutor Agent for Arya's Learning System - uses Gemma 4 via Ollama"
+requires-python = ">=3.11"
+dependencies = [
+    "requests>=2.31.0",
+    "pydantic>=2.5.0",
+    "streamlit>=1.30.0",
+    "plotly>=5.18.0",
+    "python-dotenv>=1.0.0",
+    "schedule>=1.2.0",
+]
+
+[project.scripts]
+arya-agent = "src.main:main"
+
+[build-system]
+requires = ["setuptools>=69.0"]
+build-backend = "setuptools.backends._legacy:_Backend"
