@@ -15,8 +15,7 @@ import logging
 import sys
 
 from .agent_service import AgentService
-from .bff_client import BFFClient
-from .config import DEFAULT_CHILD_ID
+from .config import DEFAULT_CHILD_ID, STORAGE_MODE
 from .ollama_client import OllamaClient
 
 logging.basicConfig(
@@ -27,10 +26,20 @@ logging.basicConfig(
 logger = logging.getLogger("arya-agent")
 
 
+def _get_store():
+    """Get the appropriate storage backend."""
+    if STORAGE_MODE == "bff":
+        from .bff_client import BFFClient
+        return BFFClient()
+    else:
+        from .local_store import LocalStore
+        return LocalStore()
+
+
 def _get_service() -> AgentService:
-    bff = BFFClient()
+    store = _get_store()
     ollama = OllamaClient()
-    return AgentService(bff, ollama)
+    return AgentService(store, ollama)
 
 
 def cmd_setup(args: argparse.Namespace) -> None:
@@ -42,6 +51,7 @@ def cmd_setup(args: argparse.Namespace) -> None:
 
     service = _get_service()
     logger.info("🦉 Starting initial setup for child %s …", child_id)
+    logger.info("📦 Storage mode: %s", STORAGE_MODE)
     result = service.initial_setup(child_id)
     logger.info("✅ Setup complete!")
     print(json.dumps(result, indent=2))

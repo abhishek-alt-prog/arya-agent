@@ -1,0 +1,275 @@
+[
+  {
+    "id": "local-0001",
+    "childId": "arya-001",
+    "subject": "SCIENCE",
+    "units": [
+      {
+        "name": "Plants",
+        "topics": [
+          "Parts of a plant",
+          "What plants need to grow",
+          "How water travels through plants",
+          "Life cycle of a flowering plant",
+          "Seeds and how they spread"
+        ],
+        "difficultyRange": [
+          "EASY"
+        ],
+        "sequenceOrder": 0,
+        "completed": false
+      },
+      {
+        "name": "Animals Including Humans",
+        "topics": [
+          "What animals eat \u2014 herbivore, carnivore, omnivore",
+          "Skeletons and bones",
+          "Muscles and movement",
+          "The five senses",
+          "Staying healthy \u2014 exercise and food"
+        ],
+        "difficultyRange": [
+          "EASY"
+        ],
+        "sequenceOrder": 1,
+        "completed": false
+      },
+      {
+        "name": "Rocks and Soils",
+        "topics": [
+          "Different types of rocks",
+          "How rocks are formed",
+          "Comparing rocks \u2014 hard vs soft",
+          "What is soil made of?",
+          "Fossils \u2014 clues from the past"
+        ],
+        "difficultyRange": [
+          "EASY"
+        ],
+        "sequenceOrder": 2,
+        "completed": false
+      },
+      {
+        "name": "Light and Shadows",
+        "topics": [
+          "Sources of light",
+          "Light and dark",
+          "How shadows are made",
+          "Changing the size of shadows",
+          "Reflections and mirrors"
+        ],
+        "difficultyRange": [
+          "EASY"
+        ],
+        "sequenceOrder": 3,
+        "completed": false
+      },
+      {
+        "name": "Forces and Magnets",
+        "topics": [
+          "Pushes and pulls",
+          "What are magnets?",
+          "Magnetic and non-magnetic materials",
+          "Poles of a magnet \u2014 attract and repel",
+          "Everyday uses of magnets"
+        ],
+        "difficultyRange": [
+          "EASY"
+        ],
+        "sequenceOrder": 4,
+        "completed": false
+      }
+    ],
+    "status": "ACTIVE",
+    "generatedAt": "2026-07-14T19:55:25.386668",
+    "lastUpdatedAt": null,
+    "generatedByAgentVersion": "0.1.0"
+  },
+  {
+    "id": "local-0002",
+    "childId": "arya-001",
+    "subject": "MATHS",
+    "units": [
+      {
+        "name": "Number and Place Value",
+        "topics": [
+          "Counting in 2s, 5s, and 10s",
+          "Hundreds, tens, and ones",
+          "Comparing and ordering numbers to 1000",
+          "Number lines and sequences",
+          "Reading and writing numbers in words"
+        ],
+        "difficultyRange": [
+          "EASY"
+        ],
+        "sequenceOrder": 0,
+        "completed": false
+      },
+      {
+        "name": "Addition and Subtraction",
+        "topics": [
+          "Adding two-digit numbers",
+          "Subtracting two-digit numbers",
+          "Column addition",
+          "Column subtraction with borrowing",
+          "Word problems \u2014 addition and subtraction"
+        ],
+        "difficultyRange": [
+          "EASY"
+        ],
+        "sequenceOrder": 1,
+        "completed": false
+      },
+      {
+        "name": "Multiplication and Division",
+        "topics": [
+          "The 2, 5, and 10 times tables",
+          "The 3 and 4 times tables",
+          "Multiplying by 1 and 0",
+          "Sharing equally \u2014 intro to division",
+          "Word problems \u2014 multiply and divide"
+        ],
+        "difficultyRange": [
+          "EASY"
+        ],
+        "sequenceOrder": 2,
+        "completed": false
+      },
+      {
+        "name": "Fractions",
+        "topics": [
+          "What is a fraction?",
+          "Halves, quarters, and thirds",
+          "Finding fractions of amounts",
+          "Comparing simple fractions",
+          "Fractions on a number line"
+        ],
+        "difficultyRange": [
+          "EASY"
+        ],
+        "sequenceOrder": 3,
+        "completed": false
+      },
+      {
+        "name": "Measurement",
+        "topics": [
+          "Measuring length \u2014 cm and m",
+          "Measuring mass \u2014 g and kg",
+          "Measuring capacity \u2014 ml and l",
+          "Telling the time \u2014 hours and minutes",
+          "Money \u2014 adding coins and giving change"
+        ],
+        "difficultyRange": [
+          "EASY"
+        ],
+        "sequenceOrder": 4,
+        "completed": false
+      },
+      {
+        "name": "Geometry",
+        "topics": [
+          "2D shapes \u2014 sides and corners",
+          "3D shapes \u2014 faces, edges, vertices",
+          "Lines of symmetry",
+          "Turns \u2014 quarter, half, three-quarter, full",
+          "Position and direction \u2014 left, right, above, below"
+        ],
+        "difficultyRange": [
+          "EASY"
+        ],
+        "sequenceOrder": 5,
+        "completed": false
+      }
+    ],
+    "status": "ACTIVE",
+    "generatedAt": "2026-07-14T19:55:25.387342",
+    "lastUpdatedAt": null,
+    "generatedByAgentVersion": "0.1.0"
+  },
+  {
+    "id": "local-0003",
+    "childId": "arya-001",
+    "subject": "ENGLISH",
+    "units": [
+      {
+        "name": "Reading Comprehension",
+        "topics": [
+          "Reading a short story and answering questions",
+          "Finding the main idea",
+          "Understanding characters and feelings",
+          "Predicting what happens next",
+          "Non-fiction \u2014 finding facts in a text"
+        ],
+        "difficultyRange": [
+          "EASY"
+        ],
+        "sequenceOrder": 0,
+        "completed": false
+      },
+      {
+        "name": "Phonics and Spelling",
+        "topics": [
+          "Common spelling patterns \u2014 igh, tion, ous",
+          "Silent letters \u2014 kn, wr, gn",
+          "Homophones \u2014 there, their, they're",
+          "Prefixes \u2014 un, dis, re",
+          "Suffixes \u2014 ly, ful, less, ness"
+        ],
+        "difficultyRange": [
+          "EASY"
+        ],
+        "sequenceOrder": 1,
+        "completed": false
+      },
+      {
+        "name": "Grammar",
+        "topics": [
+          "Nouns, verbs, and adjectives",
+          "Using capital letters and full stops",
+          "Question marks and exclamation marks",
+          "Conjunctions \u2014 and, but, because, so",
+          "Past tense and present tense"
+        ],
+        "difficultyRange": [
+          "EASY"
+        ],
+        "sequenceOrder": 2,
+        "completed": false
+      },
+      {
+        "name": "Writing",
+        "topics": [
+          "Writing a simple sentence",
+          "Planning a story \u2014 beginning, middle, end",
+          "Describing words \u2014 adjectives and adverbs",
+          "Writing instructions",
+          "Writing a letter or postcard"
+        ],
+        "difficultyRange": [
+          "EASY"
+        ],
+        "sequenceOrder": 3,
+        "completed": false
+      },
+      {
+        "name": "Vocabulary",
+        "topics": [
+          "Synonyms \u2014 words that mean the same",
+          "Antonyms \u2014 words that are opposite",
+          "Compound words",
+          "Using a dictionary",
+          "Word families"
+        ],
+        "difficultyRange": [
+          "EASY"
+        ],
+        "sequenceOrder": 4,
+        "completed": false
+      }
+    ],
+    "status": "ACTIVE",
+    "generatedAt": "2026-07-14T19:55:25.388099",
+    "lastUpdatedAt": null,
+    "generatedByAgentVersion": "0.1.0"
+  }
+]

@@ -13,7 +13,6 @@ import logging
 from datetime import datetime
 from typing import Optional
 
-from .bff_client import BFFClient
 from .course_generator import CourseGenerator
 from .models import (
     AssessmentResult,
@@ -62,10 +61,10 @@ class AgentService:
     4. Push new lessons to the BFF.
     """
 
-    def __init__(self, bff: BFFClient, ollama: OllamaClient):
-        self.bff = bff
+    def __init__(self, store, ollama: OllamaClient):
+        self.bff = store
         self.ollama = ollama
-        self.generator = CourseGenerator(bff, ollama)
+        self.generator = CourseGenerator(store, ollama)
 
     # ── Initial setup ────────────────────────────────────────────────
 

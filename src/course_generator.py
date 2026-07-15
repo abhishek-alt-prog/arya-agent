@@ -9,7 +9,6 @@ import uuid
 from datetime import datetime
 from typing import Optional
 
-from .bff_client import BFFClient
 from .config import AGENT_VERSION
 from .curriculum import CURRICULUM, get_units_for_subject
 from .models import (
@@ -60,10 +59,10 @@ class CourseGenerator:
 
     def __init__(
         self,
-        bff: BFFClient,
+        store,
         ollama: OllamaClient,
     ):
-        self.bff = bff
+        self.bff = store
         self.ollama = ollama
 
     # ── Initial course generation ────────────────────────────────────
