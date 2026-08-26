@@ -67,6 +67,7 @@ class ContentSection(BaseModel):
     body: str
     image_description: Optional[str] = Field(alias="imageDescription", default=None)
     image_url: Optional[str] = Field(alias="imageUrl", default=None)
+    audio_url: Optional[str] = Field(alias="audioUrl", default=None)
     fun_fact: Optional[str] = Field(alias="funFact", default=None)
 
     model_config = {"populate_by_name": True}
@@ -75,8 +76,10 @@ class ContentSection(BaseModel):
 class LessonContent(BaseModel):
     title: str
     introduction: str
+    audio_url: Optional[str] = Field(alias="audioUrl", default=None)
     sections: list[ContentSection] = []
     summary: str = ""
+    summary_audio_url: Optional[str] = Field(alias="summaryAudioUrl", default=None)
 
     model_config = {"populate_by_name": True}
 
@@ -85,6 +88,7 @@ class Question(BaseModel):
     id: str
     type: QuestionType
     question_text: str = Field(alias="questionText")
+    audio_url: Optional[str] = Field(alias="audioUrl", default=None)
     hint: Optional[str] = None
 
     # MCQ

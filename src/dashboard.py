@@ -12,8 +12,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import streamlit as st
 
-from src.bff_client import BFFClient
-from src.config import DEFAULT_CHILD_ID
+from src.config import DEFAULT_CHILD_ID, STORAGE_MODE
 
 st.set_page_config(
     page_title="Arya's Learning Dashboard",
@@ -26,7 +25,12 @@ st.set_page_config(
 st.sidebar.title("🦉 Arya's Dashboard")
 child_id = st.sidebar.text_input("Child ID", value=DEFAULT_CHILD_ID)
 
-bff = BFFClient()
+if STORAGE_MODE == "bff":
+    from src.bff_client import BFFClient
+    store = BFFClient()
+else:
+    from src.local_store import LocalStore
+    store = LocalStore()
 
 # ── Connection status ────────────────────────────────────────────────
 
@@ -35,7 +39,7 @@ if not child_id:
     st.stop()
 
 try:
-    dashboard_data = bff.get_dashboard(child_id)
+    dashboard_data = store.get_dashboard(child_id)
 except Exception as exc:
     st.error(f"Could not connect to BFF: {exc}")
     st.info("Make sure the Spring Boot BFF is running on the Mac Mini.")
@@ -94,7 +98,7 @@ st.divider()
 st.header("📊 Detailed Progress")
 
 try:
-    progress_data = bff.get_progress(child_id)
+    progress_data = store.get_progress(child_id)
     if progress_data:
         import pandas as pd
 

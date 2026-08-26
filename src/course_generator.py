@@ -23,6 +23,7 @@ from .models import (
     Unit,
 )
 from .ollama_client import OllamaClient
+from .media_generator import MediaGenerator
 
 logger = logging.getLogger(__name__)
 
@@ -64,6 +65,7 @@ class CourseGenerator:
     ):
         self.bff = store
         self.ollama = ollama
+        self.media_gen = MediaGenerator()
 
     # ── Initial course generation ────────────────────────────────────
 
@@ -131,8 +133,26 @@ class CourseGenerator:
             # Generate lesson content via LLM
             content = self._generate_lesson_content(subject, unit_name, topic, difficulty)
 
+            # Generate media for the content
+            logger.info("Generating media for lesson: %s", topic)
+            if content.introduction:
+                content.audio_url = self.media_gen.generate_audio(content.introduction, prefix="intro")
+            
+            for section in content.sections:
+                if section.body:
+                    section.audio_url = self.media_gen.generate_audio(section.body, prefix="section")
+                if section.image_description:
+                    section.image_url = self.media_gen.generate_image(section.image_description, prefix="img")
+
+            if content.summary:
+                content.summary_audio_url = self.media_gen.generate_audio(content.summary, prefix="summary")
+
             # Generate assessment questions via LLM
             questions = self._generate_questions(subject, unit_name, topic, difficulty)
+
+            for q in questions:
+                if q.question_text:
+                    q.audio_url = self.media_gen.generate_audio(q.question_text, prefix="question")
 
             lesson = Lesson(
                 courseId=course_id,
@@ -147,6 +167,9 @@ class CourseGenerator:
                 createdAt=datetime.now().isoformat(),
             )
             lessons.append(lesson)
+
+        # Unload media models to free memory
+        self.media_gen.unload_models()
 
         # Push to BFF in bulk
         if lessons:

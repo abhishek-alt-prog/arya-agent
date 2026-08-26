@@ -1,3 +1,10 @@
 pydantic>=2.5.0
 requests>=2.31.0
 python-dotenv>=1.0.0
+diffusers
+torch
+transformers
+edge-tts
+nest_asyncio
+
+accelerate

@@ -1,0 +1,1810 @@
+[
+  {
+    "id": "local-0004",
+    "courseId": "local-0001",
+    "childId": "arya-001",
+    "subject": "SCIENCE",
+    "unitName": "Plants",
+    "topicName": "Parts of a plant",
+    "sequenceOrder": 0,
+    "difficulty": "EASY",
+    "content": {
+      "title": "\ud83c\udf3f The Amazing Superpowers of Plants! \ud83c\udf38",
+      "introduction": "Hoo-hoo! Hello there, amazing learner! I'm Hoot the Owl, and today we are going on a secret mission underground and up high. Get ready to discover the wonderful parts that make plants grow big and strong!",
+      "sections": [
+        {
+          "heading": "The Mighty Roots (Underground Superheroes!)",
+          "body": "Can you guess what keeps a plant standing tall? It's its roots! These are the parts hidden under the soil. Think of them like giant straws, sucking up all the water and yummy nutrients from the earth. The roots also act like anchors, holding the whole plant tight so it doesn't blow away in the wind!",
+          "imageDescription": "A cartoon drawing showing a cross-section of the ground with visible, wiggly roots absorbing blue 'water drops' and yellow 'nutrient sparkles'.",
+          "imageUrl": null,
+          "funFact": "Some roots are so big they can be found in giant underground tunnels!"
+        },
+        {
+          "heading": "The Stem and Leaves (Plant Kitchen!)",
+          "body": "The stem is like the plant\u2019s backbone, holding everything up high! The leaves are even more magical; they are the plant's kitchen. Using sunshine, water from the roots, and air, the leaves cook up food for the whole plant through a process called photosynthesis. This yummy food helps the plant grow bigger every day!",
+          "imageDescription": "A bright diagram showing a green stem supporting several large, smiling leaves. Arrows should point from the sun (sunshine) to the leaves.",
+          "imageUrl": null,
+          "funFact": "Plants breathe out oxygen, which is what we need to take big breaths!"
+        },
+        {
+          "heading": "The Beautiful Flowers (Baby Makers!)",
+          "body": "Flowers are often the prettiest part, aren't they? They look like colourful flags! But their job is super important: making seeds. These little seeds hold the promise of brand new baby plants. After a flower fades, it might turn into a yummy fruit, which protects those tiny, sleeping seeds.",
+          "imageDescription": "A vibrant illustration showing a large, open flower with visible pollen dust and small, round berries or seeds nearby.",
+          "imageUrl": null,
+          "funFact": "Bumblebees love flowers because they get sweet nectar to eat!"
+        }
+      ],
+      "summary": "Wow! You did it! Remember that plants have roots that drink water, stems and leaves that cook food, and beautiful flowers that make new life. Plants are amazing living machines that help us breathe fresh air every single day!"
+    },
+    "assessmentQuestions": [
+      {
+        "id": "q1",
+        "type": "MCQ",
+        "questionText": "Hello, super scientist! What is the most important job of the roots underground?",
+        "hint": "Think about what plants need from the soil to stay alive.",
+        "options": [
+          "Making pretty flowers.",
+          "Catching sunlight for energy.",
+          "Drinking up water and nutrients from the ground.",
+          "Holding all the leaves in place."
+        ],
+        "correctOptionIndex": 2,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q2",
+        "type": "FILL_BLANK",
+        "questionText": "Fill in the blank to help us understand how plants eat!",
+        "hint": "This part is usually green and catches sunlight.",
+        "options": null,
+        "correctOptionIndex": null,
+        "sentenceWithBlank": "The plant uses its ___________ to catch sunshine and make food through a process called photosynthesis.",
+        "correctAnswer": "leaves",
+        "acceptableAnswers": [
+          "leaves",
+          "Leaf"
+        ],
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q3",
+        "type": "MCQ",
+        "questionText": "Which part of the plant acts like its strong backbone, helping it stand up tall and move water from the roots to the leaves?",
+        "hint": "It connects all the other parts together.",
+        "options": [
+          "The flower",
+          "The leaf",
+          "The stem",
+          "The root"
+        ],
+        "correctOptionIndex": 2,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q4",
+        "type": "MCQ",
+        "questionText": "If a plant wants to make new baby plants, which part is usually responsible for creating seeds?",
+        "hint": "These parts are often brightly colored and sweet-smelling.",
+        "options": [
+          "The roots",
+          "The stem",
+          "The flower",
+          "The leaf"
+        ],
+        "correctOptionIndex": 2,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      }
+    ],
+    "status": "NOT_STARTED",
+    "starRating": null,
+    "xpEarned": null,
+    "createdAt": "2026-07-14T19:56:48.544338"
+  },
+  {
+    "id": "local-0005",
+    "courseId": "local-0001",
+    "childId": "arya-001",
+    "subject": "SCIENCE",
+    "unitName": "Plants",
+    "topicName": "What plants need to grow",
+    "sequenceOrder": 1,
+    "difficulty": "EASY",
+    "content": {
+      "title": "\ud83c\udf3f \ud83c\udf31 Plant Superpowers: What Makes Them Grow Big!",
+      "introduction": "Hoo-hoo! Good morning, superstar scientist! I\u2019m Hoot the Owl, and today we are going on a magical adventure into the world of plants. Get ready to learn their secret recipe for growing big and strong!",
+      "sections": [
+        {
+          "heading": "\ud83d\udca7 Water: The Plant's Drink",
+          "body": "Just like you need a drink when you play outside, plants get thirsty too! They suck up water through their roots, which are hidden underground. Think of the soil like a big sponge\u2014it holds all the lovely water for the plant to sip. If a plant doesn't get enough water, it droops and looks sad!",
+          "imageDescription": "A cartoon drawing of a smiling flower with visible roots reaching down into wet, brown soil, showing little 'water drops' being absorbed.",
+          "imageUrl": null,
+          "funFact": "Plants don't drink from cups; they use their roots like straws to pull water up!"
+        },
+        {
+          "heading": "\u2600\ufe0f Sunlight: Plant Energy Food",
+          "body": "Sunlight is the plant\u2019s main source of energy, almost like plugging into a magic battery! Plants are amazing because they use sunshine to make their own food. They soak up those bright rays all day long. The sun helps them grow leaves that are green and strong.",
+          "imageDescription": "A brightly colored drawing showing a happy sunflower with big, glowing yellow sunbeams hitting its leaves. Arrows point from the sun to the plant.",
+          "imageUrl": null,
+          "funFact": "The green colour in leaves is called chlorophyll, and it\u2019s what helps them catch sunshine!"
+        },
+        {
+          "heading": "\ud83c\udf0d Soil: The Cozy Bed",
+          "body": "Plants need a nice home to live in! That's where soil comes in. Good soil acts like a cozy bed for the plant's roots. It holds onto water and gives them tiny bits of food, which we call nutrients. If the soil is poor, the plant can\u2019t get all the vitamins it needs.",
+          "imageDescription": "A cross-section drawing showing healthy, dark brown soil surrounding strong roots. Little glowing 'food particles' are visible in the soil.",
+          "imageUrl": null,
+          "funFact": "Soil isn't just dirt; it's a mix of tiny rocks, dead leaves, and yummy things that help plants eat!"
+        }
+      ],
+      "summary": "Wow! You did it! Remember that every plant needs three main superpowers to thrive: lots of water \ud83d\udca7, bright sunshine \u2600\ufe0f, and good soil \ud83c\udf0d. If we give plants these three things, they will grow big, beautiful, and strong for us to enjoy!"
+    },
+    "assessmentQuestions": [
+      {
+        "id": "q1",
+        "type": "MCQ",
+        "questionText": "If a plant doesn't get enough water, what will happen to it?",
+        "hint": "Think about what happens when you leave a flower in the sun without watering it.",
+        "options": [
+          "It will grow taller and stronger.",
+          "Its leaves might wilt and droop.",
+          "It will suddenly turn bright purple.",
+          "It will make more flowers."
+        ],
+        "correctOptionIndex": 1,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q2",
+        "type": "FILL_BLANK",
+        "questionText": "Fill in the blank to name what gives plants their energy.",
+        "hint": "It is a giant, bright ball in the sky that shines all day long.",
+        "options": null,
+        "correctOptionIndex": null,
+        "sentenceWithBlank": "Plants use energy from the ___ to make their food.",
+        "correctAnswer": "sunlight",
+        "acceptableAnswers": [
+          "sunlight",
+          "Sun"
+        ],
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q3",
+        "type": "MCQ",
+        "questionText": "Why is having good soil important for a plant?",
+        "hint": "Soil does more than just hold water; it also gives plants food!",
+        "options": [
+          "It keeps the wind away from the leaves.",
+          "It helps keep the temperature cool all day.",
+          "It provides nutrients and minerals that help the roots grow big.",
+          "It makes the plant smell sweet."
+        ],
+        "correctOptionIndex": 2,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q4",
+        "type": "MCQ",
+        "questionText": "Besides sunlight, water, and soil, what invisible thing do plants also need to breathe?",
+        "hint": "It's something we all breathe out, but plants use it for their magic cooking process.",
+        "options": [
+          "Chocolate chips",
+          "Oxygen",
+          "Carbon Dioxide",
+          "Rainbow dust"
+        ],
+        "correctOptionIndex": 2,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      }
+    ],
+    "status": "NOT_STARTED",
+    "starRating": null,
+    "xpEarned": null,
+    "createdAt": "2026-07-14T19:57:57.333311"
+  },
+  {
+    "id": "local-0006",
+    "courseId": "local-0001",
+    "childId": "arya-001",
+    "subject": "SCIENCE",
+    "unitName": "Plants",
+    "topicName": "How water travels through plants",
+    "sequenceOrder": 2,
+    "difficulty": "EASY",
+    "content": {
+      "title": "\ud83d\udca7 The Plant's Secret Super Highway! \ud83c\udf3f",
+      "introduction": "Hoo-hoo! Good morning, wonderful scientist! I'm Hoot the Owl, and today we are going on a magical journey. We are going to discover how plants drink water from deep underground all the way up to their leaves!",
+      "sections": [
+        {
+          "heading": "Step 1: Sipping Up with Roots",
+          "body": "Did you know that plant roots act just like giant straws? They live in the soil and suck up every drop of water they can find. The roots have tiny little openings that let them drink through the dirt. This fresh, cool water is the start of the whole adventure!",
+          "imageDescription": "A cartoon drawing showing a cross-section of soil with bright green roots sticking out, and blue arrows pointing into the root tips like straws drinking liquid.",
+          "imageUrl": null,
+          "funFact": "Some tree roots can grow so big they are thicker than your arm!"
+        },
+        {
+          "heading": "Step 2: The Water Elevator in the Stem",
+          "body": "Once the water is sucked up, it needs to travel! It goes into a special tube inside the stem. Think of this tube like a super-fast elevator or a big drinking straw running up the plant. This amazing path helps pull the water all the way up, reaching the highest leaves!",
+          "imageDescription": "A vertical cutaway drawing of a stem showing blue arrows moving rapidly upwards through a central 'pipe' labeled 'Xylem'.",
+          "imageUrl": null,
+          "funFact": "The tubes that carry water are called Xylem\u2014it sounds like science magic!"
+        },
+        {
+          "heading": "Step 3: The Leaves' Green Kitchen!",
+          "body": "Finally, the water reaches the leaves! The leaves use this fresh water, along with sunshine and air, to cook up food for the plant. It\u2019s like a tiny green kitchen where they make energy! They also let some extra water vapor escape, which helps pull more water up from below.",
+          "imageDescription": "A bright drawing of a leaf looking like a solar panel or a kitchen counter, with rays of sunshine hitting it and blue arrows showing the water being used inside.",
+          "imageUrl": null,
+          "funFact": "Plants breathe out oxygen\u2014that's what we need to take big breaths!"
+        }
+      ],
+      "summary": "Hoo-hoo! You did an amazing job today! Remember that plant roots are like straws, and the stem is a water elevator. This journey helps the leaves cook up food using sunshine and water. Plants are truly nature's magical drink-it-all machines!"
+    },
+    "assessmentQuestions": [
+      {
+        "id": "q1",
+        "type": "MCQ",
+        "questionText": "When a plant needs water, where does it usually suck up the water from the ground?",
+        "hint": "Think about which part of the plant is underground.",
+        "options": [
+          "The leaves",
+          "The flowers",
+          "The roots",
+          "The stem"
+        ],
+        "correctOptionIndex": 2,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q2",
+        "type": "FILL_BLANK",
+        "questionText": "Fill in the blank. The water travels up the plant using special tubes called ___.",
+        "hint": "These tubes are like straws inside the plant!",
+        "options": null,
+        "correctOptionIndex": null,
+        "sentenceWithBlank": "The water travels up the plant using special tubes called ___. ",
+        "correctAnswer": "xylem",
+        "acceptableAnswers": [
+          "xylem"
+        ],
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q3",
+        "type": "MCQ",
+        "questionText": "If the water goes up from the roots, which part of the plant is it traveling through to reach the leaves?",
+        "hint": "It needs a main pathway to get from the bottom to the top.",
+        "options": [
+          "The soil",
+          "The air",
+          "The stem",
+          "The clouds"
+        ],
+        "correctOptionIndex": 2,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q4",
+        "type": "MCQ",
+        "questionText": "What is the main source of water that helps start this journey through the plant?",
+        "hint": "It falls from the sky when it rains.",
+        "options": [
+          "Milk",
+          "Soda pop",
+          "Rainwater",
+          "Juice"
+        ],
+        "correctOptionIndex": 2,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      }
+    ],
+    "status": "NOT_STARTED",
+    "starRating": null,
+    "xpEarned": null,
+    "createdAt": "2026-07-14T19:59:04.748865"
+  },
+  {
+    "id": "local-0007",
+    "courseId": "local-0001",
+    "childId": "arya-001",
+    "subject": "SCIENCE",
+    "unitName": "Plants",
+    "topicName": "Life cycle of a flowering plant",
+    "sequenceOrder": 3,
+    "difficulty": "EASY",
+    "content": {
+      "title": "\ud83c\udf31 The Amazing Life Journey of a Plant! \ud83c\udf38",
+      "introduction": "Hoo-hoo there, little scientist! I'm Hoot the Owl, and today we are going on a super fun adventure. We are going to discover how tiny seeds grow into giant, beautiful plants!",
+      "sections": [
+        {
+          "heading": "1. The Tiny Treasure: The Seed",
+          "body": "A seed is like a little sleeping treasure! Inside that hard shell is a baby plant waiting for its chance to wake up. Seeds hold all the instructions needed to grow big and strong. They need three things to start their journey: water, warmth, and air!",
+          "imageDescription": "Illustration of various seeds (bean, sunflower) labeled as 'sleeping treasures' in the soil.",
+          "imageUrl": null,
+          "funFact": "Some seeds are so light you can blow them away! They float on the wind like tiny parachutes."
+        },
+        {
+          "heading": "2. Waking Up: Germination!",
+          "body": "When a seed gets enough water and warmth, it wakes up! This process is called germination. The first thing to pop out is usually a little root, which anchors the plant deep into the soil. Then, a tiny green shoot pushes upwards towards the sunshine. It\u2019s like taking that very first big breath!",
+          "imageDescription": "A cross-section diagram showing a seed cracking open and a small white root growing downwards while a green sprout grows upwards.",
+          "imageUrl": null,
+          "funFact": "The roots are super important because they act like straws, sucking up all the yummy water from the ground!"
+        },
+        {
+          "heading": "3. Growing Strong: Leaves and Sunshine",
+          "body": "As the plant gets taller, its leaves pop out! The leaves are like tiny solar panels that catch sunshine. Plants use sunlight, water, and air to make their own food in a magical process called photosynthesis. This is how they get strong enough to grow big flowers!",
+          "imageDescription": "A happy cartoon plant with large green leaves, surrounded by bright sun rays labeled 'Magic Food'.",
+          "imageUrl": null,
+          "funFact": "Plants breathe out something we need to live: oxygen! So plants are best friends with animals and people!"
+        },
+        {
+          "heading": "4. Making New Seeds: Flowers and Fruit",
+          "body": "When the plant is ready, it makes beautiful flowers! The flowers are like the plant's way of saying, 'Look at me!' They attract buzzing bees and butterflies. After pollination happens (when pollen moves from flower to flower), the plant creates a fruit or more seeds for the next generation!",
+          "imageDescription": "A colorful illustration showing a bee landing on a bright flower, with an arrow pointing to a developing apple/berry nearby.",
+          "imageUrl": null,
+          "funFact": "Think about apples! The seed inside the apple is what will grow into a brand new apple tree!"
+        }
+      ],
+      "summary": "Wow, you did it! You learned that life is a cycle. A tiny seed wakes up with help from water and sun, grows leaves to make food, blooms beautiful flowers, and finally makes seeds to start the whole wonderful journey over again. Keep exploring nature!"
+    },
+    "assessmentQuestions": [
+      {
+        "id": "q1",
+        "type": "MCQ",
+        "questionText": "A tiny seed needs three things to wake up and start growing into a plant. Which group of items helps it begin its life cycle?",
+        "hint": "Think about what you need for a good nap or a rainy day garden.",
+        "options": [
+          "Sunshine, water, and warmth",
+          "Toys, candy, and books",
+          "Raindrops, clouds, and wind",
+          "Big rocks, dirt, and grass"
+        ],
+        "correctOptionIndex": 0,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q2",
+        "type": "FILL_BLANK",
+        "questionText": "Fill in the blank. What is the colorful part of the plant that makes new seeds?",
+        "hint": "It's often bright and smells sweet!",
+        "options": null,
+        "correctOptionIndex": null,
+        "sentenceWithBlank": "The ___ helps a flowering plant make its next generation.",
+        "correctAnswer": "flower",
+        "acceptableAnswers": [
+          "flower",
+          "Flower"
+        ],
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q3",
+        "type": "MCQ",
+        "questionText": "When pollen moves from one flower to another, it is called pollination. What helps move this yellow dust?",
+        "hint": "Think about buzzing creatures that love sweet nectar.",
+        "options": [
+          "Strong winds and rain",
+          "Busy bees and butterflies",
+          "Big elephants walking by",
+          "Magic fairy dust"
+        ],
+        "correctOptionIndex": 1,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q4",
+        "type": "MCQ",
+        "questionText": "After the flower has made seeds inside, what grows around them to keep them safe until they are ready to fall?",
+        "hint": "Think about apples or tomatoes!",
+        "options": [
+          "The stem",
+          "The leaf",
+          "The fruit",
+          "The root"
+        ],
+        "correctOptionIndex": 2,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      }
+    ],
+    "status": "NOT_STARTED",
+    "starRating": null,
+    "xpEarned": null,
+    "createdAt": "2026-07-14T20:00:20.867649"
+  },
+  {
+    "id": "local-0008",
+    "courseId": "local-0001",
+    "childId": "arya-001",
+    "subject": "SCIENCE",
+    "unitName": "Plants",
+    "topicName": "Seeds and how they spread",
+    "sequenceOrder": 4,
+    "difficulty": "EASY",
+    "content": {
+      "title": "\ud83c\udf31 Seed Superpowers! How Plants Travel",
+      "introduction": "Hoo-hoo! Hello there, amazing scientist! I'm Hoot the Owl, and today we are going on a tiny adventure. We are going to learn how little seeds get from one place to another so they can grow big and strong!",
+      "sections": [
+        {
+          "heading": "What is a Seed?",
+          "body": "Imagine a seed is like a tiny, sleeping baby plant! Inside that hard shell, all the magic for a new life is waiting. Seeds hold everything needed\u2014food and instructions\u2014to sprout roots and grow leaves. They are nature's little time capsules, ready to pop open when it\u2019s time!",
+          "imageDescription": "A close-up drawing of an apple cut in half, showing several seeds nestled inside.",
+          "imageUrl": null,
+          "funFact": "Some seeds actually have tiny built-in parachutes to help them float away!"
+        },
+        {
+          "heading": "Floating on the Wind",
+          "body": "Sometimes, the wind is our best friend! Many plants make their seeds super light so they can ride the breezes. Think of a dandelion puff\u2014it looks like it\u2019s floating on magic fluff. The wind catches these tiny seeds and carries them far away, like little natural parachutes.",
+          "imageDescription": "A drawing of several white dandelion seeds blowing in a gentle breeze towards a distant field.",
+          "imageUrl": null,
+          "funFact": "If you blow really hard on some dry grass, you are helping the wind spread those seeds!"
+        },
+        {
+          "heading": "Animal Hitchhikers",
+          "body": "Animals help seeds travel in two cool ways! First, they might eat a bright berry and then poop out new seeds somewhere else. Second, tiny little burrs (like sticky fluff) can get stuck right to your jacket or dog's fur! The animal carries them until they fall off.",
+          "imageDescription": "A cartoon drawing of a squirrel carrying nuts, and another showing small, prickly seeds sticking to a friendly dog\u2019s tail.",
+          "imageUrl": null,
+          "funFact": "Birds often eat berries because the seeds are packed with energy for their long flights!"
+        },
+        {
+          "heading": "Floating on Water",
+          "body": "When plants grow near rivers or lakes, they use water to help spread their babies. Some seeds have a spongy, floaty coat, like a little boat! The famous coconut is the perfect example; it floats across oceans, carrying new life with it.",
+          "imageDescription": "A drawing of several coconuts floating gently on blue waves towards a sandy beach.",
+          "imageUrl": null,
+          "funFact": "Some water-floating seeds even have tiny air pockets inside to help them stay afloat for longer!"
+        }
+      ],
+      "summary": "Wow! You are such a brilliant scientist! Remember that seeds need help\u2014from the wind, from animals, or even from water\u2014to travel and find a new home. This amazing journey is how plants make sure there will always be more flowers and trees for us to see!"
+    },
+    "assessmentQuestions": [
+      {
+        "id": "q1",
+        "type": "MCQ",
+        "questionText": "If a plant wants its seeds to travel far away, which natural force is best at moving very light, fluffy seeds?",
+        "hint": "Think about what moves things through the air.",
+        "options": [
+          "Water (rivers)",
+          "Wind",
+          "Strong magnets",
+          "The moon's gravity"
+        ],
+        "correctOptionIndex": 1,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q2",
+        "type": "MCQ",
+        "questionText": "Some seeds have sticky hooks or little wings. What is the main reason plants give their seeds these special features?",
+        "hint": "They are trying to get somewhere new!",
+        "options": [
+          "To look pretty for flowers.",
+          "To make them heavier so they don't float away.",
+          "To help them stick to animals or travel far away.",
+          "To keep the bad bugs out."
+        ],
+        "correctOptionIndex": 2,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q3",
+        "type": "FILL_BLANK",
+        "questionText": "Fill in the blank",
+        "hint": "These animals often eat fruits and then poop out the seeds somewhere else.",
+        "options": null,
+        "correctOptionIndex": null,
+        "sentenceWithBlank": "Many animals, like birds and squirrels, help spread seeds by eating them and carrying them away. This is called dispersal.",
+        "correctAnswer": "animals",
+        "acceptableAnswers": [
+          "birds",
+          "squirrels",
+          "animals"
+        ],
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q4",
+        "type": "MCQ",
+        "questionText": "A seed that floats on a piece of wood floating down a river is being carried by which method of dispersal?",
+        "hint": "It needs something big and flowing to move it.",
+        "options": [
+          "Wind (air)",
+          "Gravity (falling)",
+          "Water (rivers/streams)",
+          "Sticky hands (people)"
+        ],
+        "correctOptionIndex": 2,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      }
+    ],
+    "status": "NOT_STARTED",
+    "starRating": null,
+    "xpEarned": null,
+    "createdAt": "2026-07-14T20:01:33.207135"
+  },
+  {
+    "id": "local-0009",
+    "courseId": "local-0002",
+    "childId": "arya-001",
+    "subject": "MATHS",
+    "unitName": "Number and Place Value",
+    "topicName": "Counting in 2s, 5s, and 10s",
+    "sequenceOrder": 0,
+    "difficulty": "EASY",
+    "content": {
+      "title": "Jumping Number Trains: Counting in 2s, 5s, and 10s!",
+      "introduction": "Hoo-hoo! Hello there, superstar learner! I'm Hoot the Owl, and today we are going on a number adventure. Get ready to jump up and down with me because counting is so much fun!",
+      "sections": [
+        {
+          "heading": "\ud83d\udc3e Jumping in Twos (The Pair Jump)",
+          "body": "When we count by 2s, we are always finding pairs! Think about your shoes\u2014you need two of them to walk. We start at 2 and keep jumping up by 2 each time: 2, 4, 6, 8, 10. It's like hopping on a little trampoline that only lets you land on even numbers!",
+          "imageDescription": "A drawing of two pairs of shoes (socks included) with arrows pointing from 2 to 4 to 6.",
+          "imageUrl": null,
+          "funFact": "Every time you count in twos, you are counting things that come in perfect pairs!"
+        },
+        {
+          "heading": "\ud83d\udd90\ufe0f Jumping in Fives (The Hand Jump)",
+          "body": "Counting by 5s is like grouping your fingers! If you hold out both hands, you have ten fingers. We start at 5 and jump up by 5: 5, 10, 15, 20. This pattern is also great for counting money\u2014every five steps gets us closer to a nice big coin!",
+          "imageDescription": "A child holding out both hands with ten fingers visible, and groups of five dots labeled on the fingers.",
+          "imageUrl": null,
+          "funFact": "If you count by fives, you are basically counting how many quarters fit into your number!"
+        },
+        {
+          "heading": "\ud83d\udd1f Jumping in Tens (The Big Jump)",
+          "body": "When we jump by 10s, it's the biggest and easiest jump! Imagine bundling up ten crayons\u2014that\u2019s one group of ten. We start at 10 and just add a zero each time: 10, 20, 30, 40. It feels like taking giant leaps across the number line!",
+          "imageDescription": "A drawing of four groups of ten items (like pencils or blocks), with arrows showing the jump from 10 to 20 to 30.",
+          "imageUrl": null,
+          "funFact": "If you count by tens, you are really just counting how many full bundles of things you have!"
+        },
+        {
+          "heading": "\ud83d\ude80 Super Jumper Challenge!",
+          "body": "Now let's mix it up! Can you jump in 2s to 10? Great! Now can you jump by 5s from 10 to 30? Wow! You are a number wizard! Remember, each jump is just adding that special number again and again.",
+          "imageDescription": "A colorful number line showing three different colored paths: one for 2s, one for 5s, and one for 10s.",
+          "imageUrl": null,
+          "funFact": "The best part about math is that you can use these patterns to count anything\u2014from stars in the sky to toys in your room!"
+        }
+      ],
+      "summary": "Hoo-hoo! You did it! Today, we learned how to jump with numbers. We jumped by 2s for pairs, by 5s like counting fingers, and by 10s with big leaps! Keep practicing these jumps, and you will be a number superstar!"
+    },
+    "assessmentQuestions": [
+      {
+        "id": "q1",
+        "type": "MCQ",
+        "questionText": "Hey Superstar! If we count by 2s, what number comes right after 14?",
+        "hint": "Think about pairs of socks or shoes!",
+        "options": [
+          "16",
+          "18",
+          "15",
+          "20"
+        ],
+        "correctOptionIndex": 0,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q2",
+        "type": "MCQ",
+        "questionText": "Which number does NOT belong in the pattern when counting by 5s?",
+        "hint": "Remember that counting by 5s always ends in a 0 or a 5.",
+        "options": [
+          "10",
+          "25",
+          "30",
+          "38"
+        ],
+        "correctOptionIndex": 3,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q3",
+        "type": "FILL_BLANK",
+        "questionText": "If we are counting in tens, what number comes right after 60?",
+        "hint": "Think about groups of ten fingers!",
+        "options": null,
+        "correctOptionIndex": null,
+        "sentenceWithBlank": "The next number when counting by tens after 60 is ___.",
+        "correctAnswer": "70",
+        "acceptableAnswers": [
+          "70"
+        ],
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q4",
+        "type": "MCQ",
+        "questionText": "If you are counting groups of 5 apples, which pattern are you following?",
+        "hint": "Try listing the numbers: 5, 10, 15... What is the jump size?",
+        "options": [
+          "Counting by 2s",
+          "Counting by 10s",
+          "Counting by 3s",
+          "Counting by 5s"
+        ],
+        "correctOptionIndex": 3,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      }
+    ],
+    "status": "NOT_STARTED",
+    "starRating": null,
+    "xpEarned": null,
+    "createdAt": "2026-07-14T20:02:54.716202"
+  },
+  {
+    "id": "local-0010",
+    "courseId": "local-0002",
+    "childId": "arya-001",
+    "subject": "MATHS",
+    "unitName": "Number and Place Value",
+    "topicName": "Hundreds, tens, and ones",
+    "sequenceOrder": 1,
+    "difficulty": "EASY",
+    "content": {
+      "title": "The Amazing Number Detectives: Hundreds, Tens, and Ones!",
+      "introduction": "Hoo-hoo! Hello there, super smart star! I'm Hoot the Owl, and today we are going on a number adventure. Get ready to unlock the secrets of big numbers because you are going to be a place value expert!",
+      "sections": [
+        {
+          "heading": "The Ones Place: Our Little Friends",
+          "body": "The 'Ones' spot is for counting single things, like one yummy apple or just one finger! If we have 7 ones, it means we have seven little items. They are the smallest group and they stand all alone. Think of them as tiny building blocks!",
+          "imageDescription": "A drawing showing a hand with five fingers pointing up, next to three single colorful apples.",
+          "imageUrl": null,
+          "funFact": "If you count your toes, those are always in the Ones place!"
+        },
+        {
+          "heading": "The Tens Place: The Mighty Bundles",
+          "body": "When we get ten ones, they don't want to be separate anymore! They join up and become a 'bundle of ten'. This bundle is what we call the Tens place. It\u2019s like having 10 shiny stickers bundled together in one sheet. If you have 3 tens, it means you have three full bundles!",
+          "imageDescription": "A drawing showing ten single colorful blocks tied neatly into a bundle, next to two more separate bundles.",
+          "imageUrl": null,
+          "funFact": "The number 20 is just two perfect bundles of ten!"
+        },
+        {
+          "heading": "The Hundreds Place: The Giant Stacks!",
+          "body": "Wow! When we have ten bundles of ten (that's 100!), they get so big they need their own special spot\u2014the Hundreds place. This is like a huge tower made of 10 stacks of blocks! It helps us count really, really high numbers. A hundred is a massive number!",
+          "imageDescription": "A drawing showing a very tall stack of 100 colorful building blocks, labeled '100'.",
+          "imageUrl": null,
+          "funFact": "If you counted every single star in the night sky, you might need hundreds!"
+        },
+        {
+          "heading": "Putting It All Together!",
+          "body": "Now let's be number detectives! If we see the number 342, it means: 3 Hundreds (three big stacks!), 4 Tens (four bundles of ten), and 2 Ones (two single blocks). You are reading the number from biggest to smallest! Amazing!",
+          "imageDescription": "A visual representation of the number 342 using three distinct columns: a stack of 3 large hundreds-blocks, 4 medium tens-bundles, and 2 small ones.",
+          "imageUrl": null,
+          "funFact": "The place value is like an address for every digit in a number!"
+        }
+      ],
+      "summary": "Hoo-hoo! You did it! Remember that Ones are the singles, Tens are the bundles of ten, and Hundreds are the giant stacks of one hundred. Keep practicing, because you are now a super place value expert! Give yourself a big clap!"
+    },
+    "assessmentQuestions": [
+      {
+        "id": "q1",
+        "type": "MCQ",
+        "questionText": "Look at the number 43. What does the '4' in this number really tell us about how many groups of ten we have?",
+        "hint": "Think about counting things in neat little bundles of ten!",
+        "options": [
+          "It means 4 ones.",
+          "It means 4 hundreds.",
+          "It means 4 tens (or 4 groups of ten).",
+          "It means 4 total units."
+        ],
+        "correctOptionIndex": 2,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q2",
+        "type": "FILL_BLANK",
+        "questionText": "Fill in the blank to complete the place value sentence.",
+        "hint": "Remember, when we count up to 100, what kind of numbers do we get?",
+        "options": null,
+        "correctOptionIndex": null,
+        "sentenceWithBlank": "The number 256 is made up of 2 hundreds, 5 tens, and ___ ones.",
+        "correctAnswer": "six",
+        "acceptableAnswers": [
+          "six",
+          "6"
+        ],
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q3",
+        "type": "MCQ",
+        "questionText": "Which combination of place values correctly makes the number 192?",
+        "hint": "Break it down: How many hundreds? How many tens? And how many ones?",
+        "options": [
+          "1 ten, 9 ones, 2 hundreds.",
+          "1 hundred, 9 tens, 2 ones.",
+          "10 hundreds, 9 tens, 2 ones.",
+          "1 hundred, 9 ones, 2 tens."
+        ],
+        "correctOptionIndex": 1,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q4",
+        "type": "MCQ",
+        "questionText": "If you have exactly ten groups of ten sticks, how many units do you actually have?",
+        "hint": "Ten tens grouped together make a big number!",
+        "options": [
+          "10 ones.",
+          "10 tens.",
+          "1 hundred.",
+          "100 units."
+        ],
+        "correctOptionIndex": 2,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      }
+    ],
+    "status": "NOT_STARTED",
+    "starRating": null,
+    "xpEarned": null,
+    "createdAt": "2026-07-14T20:04:18.811872"
+  },
+  {
+    "id": "local-0011",
+    "courseId": "local-0002",
+    "childId": "arya-001",
+    "subject": "MATHS",
+    "unitName": "Number and Place Value",
+    "topicName": "Comparing and ordering numbers to 1000",
+    "sequenceOrder": 2,
+    "difficulty": "EASY",
+    "content": {
+      "title": "Number Detectives: Comparing Numbers Up To 1000!",
+      "introduction": "Hoo-hoo! Hello, super student! I'm Hoot the owl, and today we are going on a number adventure! Get ready to use your amazing brain muscles because we are going to become Number Detectives!",
+      "sections": [
+        {
+          "heading": "Understanding Our Place Value Homes",
+          "body": "Think of numbers like little houses. Each digit has a special spot, or 'place value home'! The first spot is for Hundreds (the biggest group!), the middle is for Tens (groups of ten), and the last spot is for Ones. Knowing these spots helps us know which number is bigger, just like knowing which house is taller!",
+          "imageDescription": "A colorful drawing of three labeled houses: a big 'H' house (Hundreds), a medium 'T' house (Tens), and a small 'O' house (Ones).",
+          "imageUrl": null,
+          "funFact": "The number 100 is special because it means you have one whole group of one hundred things!"
+        },
+        {
+          "heading": "Who Is Bigger? Comparing Numbers!",
+          "body": "To compare two numbers, we are like detectives looking for clues! Always start by looking at the Hundreds place first. If the hundreds digits are different, that tells us which number is bigger right away. If they are the same, move over to the Tens place and check there next! We use symbols: < (less than), > (greater than), or = (equal).",
+          "imageDescription": "A friendly cartoon crocodile with its mouth open, showing how it 'eats' the bigger number (>).",
+          "imageUrl": null,
+          "funFact": "The symbol for 'greater than' looks like a hungry crocodile waiting to eat the biggest number!"
+        },
+        {
+          "heading": "Lining Up Our Numbers (Ordering)",
+          "body": "When we order numbers, it means putting them in a neat line! If we count up, we are going from the smallest number to the biggest one\u2014like lining up for the first turn on a slide. If we count down, we go backwards, from the largest number to the smallest. Always check your work by counting slowly!",
+          "imageDescription": "A group of colorful blocks arranged in ascending order (getting taller) and another group arranged in descending order (getting shorter).",
+          "imageUrl": null,
+          "funFact": "The biggest three-digit number is 999! That's a lot of numbers!"
+        }
+      ],
+      "summary": "Wow, you did it! You are a Number Detective superstar! Remember to look at the Hundreds place first when comparing, and always start from the smallest number if you are counting up. Keep practicing, and these big numbers will feel as easy as ABCs!"
+    },
+    "assessmentQuestions": [
+      {
+        "id": "q1",
+        "type": "MCQ",
+        "questionText": "Look at these three numbers: 240, 420, and 204. Which number is the smallest?",
+        "hint": "Remember to look at the digits from left to right! The smaller the digit, the smaller the number.",
+        "options": [
+          "420",
+          "240",
+          "204",
+          "All are equal"
+        ],
+        "correctOptionIndex": 2,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q2",
+        "type": "MCQ",
+        "questionText": "We are counting up! If we start at 678, and then count to the next number, what comes after it?",
+        "hint": "Just add one! Think about moving to the very next spot on a number line.",
+        "options": [
+          "698",
+          "679",
+          "680",
+          "679"
+        ],
+        "correctOptionIndex": 1,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q3",
+        "type": "FILL_BLANK",
+        "questionText": "Which symbol should go between these two numbers? (Is it bigger than, smaller than, or equal to?)",
+        "hint": "Compare the hundreds first. If they are the same, compare the tens.",
+        "options": null,
+        "correctOptionIndex": null,
+        "sentenceWithBlank": "752 ___ 852",
+        "correctAnswer": "<",
+        "acceptableAnswers": [
+          "<",
+          ">",
+          "="
+        ],
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q4",
+        "type": "MCQ",
+        "questionText": "Which number is the biggest (the largest)?",
+        "hint": "Imagine lining them up from smallest to biggest. Which one would be at the end?",
+        "options": [
+          "910",
+          "891",
+          "991",
+          "700"
+        ],
+        "correctOptionIndex": 2,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      }
+    ],
+    "status": "NOT_STARTED",
+    "starRating": null,
+    "xpEarned": null,
+    "createdAt": "2026-07-14T20:05:38.033331"
+  },
+  {
+    "id": "local-0012",
+    "courseId": "local-0002",
+    "childId": "arya-001",
+    "subject": "MATHS",
+    "unitName": "Number and Place Value",
+    "topicName": "Number lines and sequences",
+    "sequenceOrder": 3,
+    "difficulty": "EASY",
+    "content": {
+      "title": "\ud83d\ude80 Number Line Zoom! Counting Adventures!",
+      "introduction": "Hoo-hoo! Hello there, super learner! I'm Hoot the Owl, and today we are going on a wonderful mathematical journey. Get ready to jump along number tracks with me\u2014it\u2019s going to be so much fun!",
+      "sections": [
+        {
+          "heading": "What is a Number Line?",
+          "body": "Imagine a long, straight road painted on the floor! That's what a number line is. It helps us see numbers in the perfect order, like little friends standing in a neat row. The numbers always go up from left to right, just like reading a storybook. This straight path helps us count big and small!",
+          "imageDescription": "A bright, colorful number line drawn on grass, showing numbers 1 through 10 with arrows pointing forward.",
+          "imageUrl": null,
+          "funFact": "The number line is like the train tracks\u2014you can only go one way (forward!) unless you change your path!"
+        },
+        {
+          "heading": "Jumping Forward: Counting Up!",
+          "body": "When we count up, it\u2019s like climbing stairs! We start at a number and jump to the next biggest friend. If we are at 3 and we jump forward, where do we land? At 4! Jumping forward means our numbers get bigger. It's like adding more toys to your collection!",
+          "imageDescription": "A cartoon character standing on the number '5' with a big arrow jumping up to the number '6', showing movement.",
+          "imageUrl": null,
+          "funFact": "Counting up is just another way of saying 'adding!' You are always making the total bigger!"
+        },
+        {
+          "heading": "Jumping Backward: Counting Down!",
+          "body": "Sometimes we need to count down, like when a rocket launches! This means our numbers get smaller. If we start at 10 and jump backward, we land on 9. It\u2019s like counting the seconds until playtime starts. We just move left along our number road!",
+          "imageDescription": "A cartoon rocket launching with a countdown timer showing '5' to '4' to '3', illustrating movement backwards.",
+          "imageUrl": null,
+          "funFact": "Counting down is super useful when you are waiting for something exciting, like cake!"
+        },
+        {
+          "heading": "Finding the Missing Number!",
+          "body": "Number lines help us find friends who got lost! If we see 7 and then 9, what number jumped out of line? That's right\u2014it was 8! We just need to look closely at the pattern. You are a super detective finding those missing numbers!",
+          "imageDescription": "A section of a number line with three dots (blanks) between 2 and 5, asking the child to fill in '3' and '4'.",
+          "imageUrl": null,
+          "funFact": "The bigger the gap on the number line, the more numbers might be hiding inside!"
+        }
+      ],
+      "summary": "Hoo-hoo! You did an amazing job today! Remember that a number line helps us see order. We can jump forward to count up (bigger!) and jump backward to count down (smaller!). Keep practicing your jumps, because you are a maths superstar!"
+    },
+    "assessmentQuestions": [
+      {
+        "id": "q1",
+        "type": "MCQ",
+        "questionText": "Hey superstar! If you start at the number 4 on a number line and take two big jumps forward, what number will you land on?",
+        "hint": "Remember that 'forward' means counting up!",
+        "options": [
+          "5",
+          "6",
+          "7",
+          "8"
+        ],
+        "correctOptionIndex": 1,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q2",
+        "type": "FILL_BLANK",
+        "questionText": "We are following a special pattern! If we count backward from the number 15, what is the next number in our sequence?",
+        "hint": "Counting backward means taking little steps to the left on the number line.",
+        "options": null,
+        "correctOptionIndex": null,
+        "sentenceWithBlank": "The numbers go: 15, ___, 13...",
+        "correctAnswer": "14",
+        "acceptableAnswers": [
+          "14"
+        ],
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q3",
+        "type": "MCQ",
+        "questionText": "Imagine you are on a number line. If you jump from 20 straight to 26, how many steps did your big jump cover?",
+        "hint": "You need to find the difference between the two numbers.",
+        "options": [
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "correctOptionIndex": 1,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q4",
+        "type": "MCQ",
+        "questionText": "We are counting by twos (2, 4, 6...). If the next number is 30, what was the number right before it?",
+        "hint": "Think about going back two steps from 30.",
+        "options": [
+          "28",
+          "29",
+          "32",
+          "26"
+        ],
+        "correctOptionIndex": 0,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      }
+    ],
+    "status": "NOT_STARTED",
+    "starRating": null,
+    "xpEarned": null,
+    "createdAt": "2026-07-14T20:06:57.311273"
+  },
+  {
+    "id": "local-0013",
+    "courseId": "local-0002",
+    "childId": "arya-001",
+    "subject": "MATHS",
+    "unitName": "Number and Place Value",
+    "topicName": "Reading and writing numbers in words",
+    "sequenceOrder": 4,
+    "difficulty": "EASY",
+    "content": {
+      "title": "\ud83c\udf1f Number Word Detectives! Writing Numbers in Words \ud83d\udcdd",
+      "introduction": "Hoo-hoo! Hello, superstar learner! I'm Hoot the Owl, and today we are going on a magical number adventure. We are going to learn how to whisper big numbers into beautiful words!",
+      "sections": [
+        {
+          "heading": "Section 1: The Little Numbers (Up to Twenty)",
+          "body": "When we count small groups of things, like your crayons or little toys, the words are easy! We just say them out loud. For example, if you have 5 apples, we write 'five.' If you have 12 balloons, we write 'twelve.' These numbers are our number building blocks\u2014they start simple and get bigger!",
+          "imageDescription": "A brightly colored picture showing groups of objects (apples, crayons) with corresponding numeral cards (e.g., '5' next to the word 'five').",
+          "imageUrl": null,
+          "funFact": "Did you know that the number 10 is special? It\u2019s the perfect group! We often use it as a starting point for bigger numbers."
+        },
+        {
+          "heading": "Section 2: Tens and Ones (Putting Blocks Together)",
+          "body": "When we get to numbers like 34, we are using two types of blocks! The 'tens' block tells us how many groups of ten we have (like three groups of ten). Then the 'ones' block tells us what is left over. So, 34 means 'thirty' and then 'four.' We just put those words together!",
+          "imageDescription": "A visual representation using colorful blocks: three stacks of 10 red blocks labeled 'THIRTY,' and four single blue blocks labeled 'FOUR.'",
+          "imageUrl": null,
+          "funFact": "If you know your tens, you are already halfway to being a number word wizard! Keep practicing those pairs!"
+        },
+        {
+          "heading": "Section 3: The Giant Leap (Crossing into Hundreds)",
+          "body": "Now we meet the biggest word of all: 'hundred!' When you count past 99, things get big fast. If you have 100 stickers, we say 'one hundred.' This is like a giant number wrapper! It means one whole group of one hundred items. We just put that huge word in front!",
+          "imageDescription": "A picture of a massive pile of colorful balloons (100) with the numeral '100' and the words 'One Hundred' written next to it.",
+          "imageUrl": null,
+          "funFact": "Think of 100 as ten groups of ten. It\u2019s a huge number, but you just need to remember that big word!"
+        }
+      ],
+      "summary": "Wow! You are an amazing Number Word Detective! Remember: small numbers are simple; bigger numbers use 'tens' and 'ones'; and when we get really big, we shout out 'hundred!' Keep practicing, because you are building a superpower brain one number at a time. Hoo-hoo! Great job!"
+    },
+    "assessmentQuestions": [
+      {
+        "id": "q1",
+        "type": "MCQ",
+        "questionText": "If you see the number '4', which word means that amount?",
+        "hint": "Think about counting four fingers on one hand.",
+        "options": [
+          "Four",
+          "Fore",
+          "For",
+          "Foar"
+        ],
+        "correctOptionIndex": 0,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q2",
+        "type": "MCQ",
+        "questionText": "Which word correctly names the number '14'?",
+        "hint": "It starts with 'fourteen'. Say it out loud!",
+        "options": [
+          "Four-ten",
+          "Fourtyeen",
+          "Fourteen",
+          "Fourtine"
+        ],
+        "correctOptionIndex": 2,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q3",
+        "type": "FILL_BLANK",
+        "questionText": "Can you write the word for this number?",
+        "hint": "Remember that 'six' is a short, easy word.",
+        "options": null,
+        "correctOptionIndex": null,
+        "sentenceWithBlank": "I have ___ crayons in my pencil case.",
+        "correctAnswer": "six",
+        "acceptableAnswers": [
+          "six",
+          "Six"
+        ],
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q4",
+        "type": "MCQ",
+        "questionText": "If I write the word 'nine', what number is it?",
+        "hint": "Count on your fingers to help you remember this number.",
+        "options": [
+          "8",
+          "10",
+          "9",
+          "7"
+        ],
+        "correctOptionIndex": 2,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      }
+    ],
+    "status": "NOT_STARTED",
+    "starRating": null,
+    "xpEarned": null,
+    "createdAt": "2026-07-14T20:08:09.325034"
+  },
+  {
+    "id": "local-0014",
+    "courseId": "local-0003",
+    "childId": "arya-001",
+    "subject": "ENGLISH",
+    "unitName": "Reading Comprehension",
+    "topicName": "Reading a short story and answering questions",
+    "sequenceOrder": 0,
+    "difficulty": "EASY",
+    "content": {
+      "title": "\ud83c\udf1f Story Detectives: Finding Clues in Books! \ud83d\udd75\ufe0f\u200d\u2640\ufe0f",
+      "introduction": "Hoo-hoo! Hello super reader! I'm Hoot, and today we are going on a magical adventure. We are going to learn how to become amazing 'Story Detectives'! Get ready to use your brilliant brain!",
+      "sections": [
+        {
+          "heading": "\ud83d\udd0d Step 1: Getting Ready to Read",
+          "body": "Before you even read the first word, take a deep breath! It's like putting on your detective hat. Look at the title and any pictures. What do they make you think of? This helps your brain get ready for the story. Think about it like looking at a treasure map before digging\u2014it tells you where to start!",
+          "imageDescription": "A cartoon child wearing a big, silly magnifying glass and a detective hat, pointing excitedly at a book.",
+          "imageUrl": null,
+          "funFact": "When you look at pictures first, your brain makes predictions! That's super smart thinking!"
+        },
+        {
+          "heading": "\ud83d\udc42 Step 2: Listening with Your Whole Brain",
+          "body": "As you read the story, don't just let your eyes glide over the words. Use all your senses! Imagine the characters\u2014what do they look like? What sounds do they make? Try to picture it in your mind like a movie playing behind your eyelids. The more details you notice, the better detective you will be!",
+          "imageDescription": "A thought bubble showing a vivid scene (e.g., a yellow puppy chasing a red ball) coming out of an open storybook.",
+          "imageUrl": null,
+          "funFact": "When you visualize stories, it helps your memory hold onto all those wonderful details!"
+        },
+        {
+          "heading": "\u2753 Step 3: Finding the Clues (Answering Questions)",
+          "body": "This is the best part! When questions appear, don't panic. You are not supposed to guess! Instead, you must be a clue-finder. Go back through the story and hunt for the exact words that answer the question. The answers are hiding right there in the text, like shiny gold coins!",
+          "imageDescription": "A magnifying glass hovering over a printed page, with an arrow pointing from the question to the specific sentence in the text.",
+          "imageUrl": null,
+          "funFact": "Finding clues is called 'text evidence'\u2014it means you have proof right inside the story!"
+        }
+      ],
+      "summary": "Wow! You did it! Remember that reading comprehension is like being a super-smart detective. Always look at the pictures first, imagine every word, and when questions pop up, hunt for those golden clues in the text! Give yourself a big pat on the back!"
+    },
+    "assessmentQuestions": [
+      {
+        "id": "q1",
+        "type": "MCQ",
+        "questionText": "If the story says Squeaky found his nut under a big oak tree, where did he find it?",
+        "hint": "Think about the place in the story.",
+        "options": [
+          "Under an oak tree",
+          "By the river bank",
+          "Near a red flower",
+          "On a picnic blanket"
+        ],
+        "correctOptionIndex": 0,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q2",
+        "type": "FILL_BLANK",
+        "questionText": "Fill in the blank based on what happened next.",
+        "hint": "Remember what Squeaky needed to do with his food.",
+        "options": null,
+        "correctOptionIndex": null,
+        "sentenceWithBlank": "Squeaky quickly buried the yummy _______ so no one else could find it.",
+        "correctAnswer": "nut",
+        "acceptableAnswers": [
+          "nut"
+        ],
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q3",
+        "type": "MCQ",
+        "questionText": "When Squeaky and Rosie played together, how did they feel?",
+        "hint": "Think about the happy words used in the story.",
+        "options": [
+          "Tired",
+          "Bored",
+          "Joyful",
+          "Scared"
+        ],
+        "correctOptionIndex": 2,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q4",
+        "type": "MCQ",
+        "questionText": "What was the main problem Squeaky faced at the end of the story?",
+        "hint": "Look for the moment when things were difficult or challenging.",
+        "options": [
+          "He got lost in the forest",
+          "It started raining heavily",
+          "His friend Rosie left him",
+          "The sun went down too quickly"
+        ],
+        "correctOptionIndex": 1,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      }
+    ],
+    "status": "NOT_STARTED",
+    "starRating": null,
+    "xpEarned": null,
+    "createdAt": "2026-07-14T20:09:27.902548"
+  },
+  {
+    "id": "local-0015",
+    "courseId": "local-0003",
+    "childId": "arya-001",
+    "subject": "ENGLISH",
+    "unitName": "Reading Comprehension",
+    "topicName": "Finding the main idea",
+    "sequenceOrder": 1,
+    "difficulty": "EASY",
+    "content": {
+      "title": "\ud83e\udd89 Main Idea Superpowers! \ud83c\udf1f",
+      "introduction": "Hoo-hoo there, super reader! I'm Hoot the Owl, and today we are going on a reading adventure! Finding the main idea is like having a secret superpower that helps you know what story is really about.",
+      "sections": [
+        {
+          "heading": "What is the Main Idea?",
+          "body": "Imagine a big, colourful umbrella. The main idea is like that big umbrella\u2014it covers everything! It's the most important message or topic the whole text wants you to know. All the other details are just raindrops that fall under that one big umbrella.",
+          "imageDescription": "A cartoon drawing of a large, brightly coloured umbrella labeled 'Main Idea,' sheltering many small drawings (like dogs, apples, and pencils) underneath it.",
+          "imageUrl": null,
+          "funFact": "If you can tell your grown-up what the story is mostly about in just one sentence, you found the main idea!"
+        },
+        {
+          "heading": "Details vs. The Big Picture",
+          "body": "A text gives us lots of fun details\u2014like fluffy tails or crunchy apples. These are called supporting details, and they help paint a picture! But if you list all the details, you won't know the main idea. Think of it like a superhero: the hero is the main idea, and their gadgets are just helpful details!",
+          "imageDescription": "A drawing showing a large, smiling character (the 'Main Idea') standing next to several smaller characters (the 'Details'). The Main Idea character points proudly at itself.",
+          "imageUrl": null,
+          "funFact": "Sometimes authors put the main idea right at the very beginning or the very end of the story!"
+        },
+        {
+          "heading": "How Do I Find It? \ud83e\udd14",
+          "body": "When you read, stop and ask yourself: 'What is this whole thing mostly about?' If a paragraph talks about dogs playing in the park, eating bones, and chasing balls, the main idea is probably 'Dogs are fun pets.' The details just prove it! You are like a reading detective!",
+          "imageDescription": "A child wearing a magnifying glass (the 'Detective') pointing to a question mark written over a picture of various animals playing together.",
+          "imageUrl": null,
+          "funFact": "Don't worry if you can't find the main idea right away. Just read it again, slowly!"
+        }
+      ],
+      "summary": "Hoo-hoo! You did it! Remember that finding the main idea is like spotting the big umbrella over all the little raindrops of detail. Next time you read, remember to ask yourself: 'What's the most important thing here?' You are a Main Idea Superstar!"
+    },
+    "assessmentQuestions": [
+      {
+        "id": "q1",
+        "type": "MCQ",
+        "questionText": "Read this little story and tell me what the most important idea is! \n\n'Bears love honey. They spend all day searching for sweet flowers. Sometimes they nap when it gets too hot.' What is the main idea?",
+        "hint": "Think about what the whole paragraph talks about, not just one small detail.",
+        "options": [
+          "Bears like to take naps in the afternoon.",
+          "Honey and sweet flowers are delicious treats.",
+          "Bears spend their time looking for food.",
+          "Flowers grow best when it is warm outside."
+        ],
+        "correctOptionIndex": 2,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q2",
+        "type": "FILL_BLANK",
+        "questionText": "Fill in the blank to finish the main idea! \n\n'Our classroom is a wonderful place. We learn about dinosaurs, we read exciting stories, and we play fun games together.' All these things show that school helps us ___.",
+        "hint": "What does 'school' help you do every day?",
+        "options": null,
+        "correctOptionIndex": null,
+        "sentenceWithBlank": "learn new things",
+        "correctAnswer": "learn new things",
+        "acceptableAnswers": [
+          "learn new things",
+          "discover"
+        ],
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q3",
+        "type": "MCQ",
+        "questionText": "Look at this passage. What is the main message?",
+        "hint": "The story talks about three different animals. Which idea connects them all?",
+        "options": [
+          "Bears are much bigger than rabbits.",
+          "All animals need to find food to live.",
+          "Rabbits love to hop in the grass.",
+          "It is fun to watch animals play."
+        ],
+        "correctOptionIndex": 1,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q4",
+        "type": "MCQ",
+        "questionText": "Which sentence best tells the main idea of this paragraph? \n\n'When it rains, we take an umbrella. When the wind blows hard, we wear a jacket. We always need rain gear when we go outside.'",
+        "hint": "What do all those items (umbrella and jacket) have in common?",
+        "options": [
+          "Rain is much scarier than wind.",
+          "We should never leave the house.",
+          "It is important to dress for the weather.",
+          "Umbrellas are always better than jackets."
+        ],
+        "correctOptionIndex": 2,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      }
+    ],
+    "status": "NOT_STARTED",
+    "starRating": null,
+    "xpEarned": null,
+    "createdAt": "2026-07-14T20:10:45.347321"
+  },
+  {
+    "id": "local-0016",
+    "courseId": "local-0003",
+    "childId": "arya-001",
+    "subject": "ENGLISH",
+    "unitName": "Reading Comprehension",
+    "topicName": "Understanding characters and feelings",
+    "sequenceOrder": 2,
+    "difficulty": "EASY",
+    "content": {
+      "title": "\u2728 Feeling Detectives: Unlocking Story Secrets! \u2728",
+      "introduction": "Hoo-hoo! Hello there, super student! I'm Hoot the Owl, and today we are going on a magical mission. We are going to become 'Feeling Detectives' to learn all about characters and how they feel inside!",
+      "sections": [
+        {
+          "heading": "\ud83d\udd75\ufe0f\u200d\u2640\ufe0f Who is This Character?",
+          "body": "A character is any person or animal in a story! They are like the actors on a stage. To know a character, we look at what they do and how they act. Are they brave? Are they silly? Maybe they always help their friends. Think of your best friend\u2014they have special ways that make them *them*!",
+          "imageDescription": "A cartoon drawing showing three different animals (a lion, a squirrel, and a bunny) standing together, with speech bubbles pointing to each one listing a simple trait like 'Brave,' 'Quick,' or 'Friendly.'",
+          "imageUrl": null,
+          "funFact": "Sometimes characters change! This is called character development. It means they learn something new by the end of the story!"
+        },
+        {
+          "heading": "\ud83c\udf08 The Rainbow of Feelings!",
+          "body": "Feelings are like a big, colourful rainbow inside us! We can feel happy (yellow!), sad (blue!), and even surprised (green!). When we read, we look for clues to know how the character feels. Do they frown? Are their shoulders slumped? These little signs tell us everything!",
+          "imageDescription": "A large, smiling cartoon face with arrows pointing to different parts: one arrow points to a mouth saying 'Happy!', another points to eyes showing tears and says 'Sad,' and a third points to eyebrows raised and says 'Surprised.'",
+          "imageUrl": null,
+          "funFact": "It is totally okay to feel many different feelings! You can be happy *and* a little bit sad all at the same time."
+        },
+        {
+          "heading": "\ud83d\udc96 Why Do Characters Feel Things?",
+          "body": "Characters don't just feel things for fun; they feel them because of what happens in the story. If someone takes your favourite toy, you might feel angry or sad! Their feelings help us understand *why* they do what they do. It helps us put ourselves in their shoes and think: 'Hmm, I would feel that way too!'",
+          "imageDescription": "A simple drawing of two children playing with blocks. One child's tower has just fallen down, and the other child is looking at them with a sympathetic expression.",
+          "imageUrl": null,
+          "funFact": "Understanding feelings helps us be better friends because we know how to cheer someone up when they are having a tough day."
+        }
+      ],
+      "summary": "Wow! You did it! You are now an expert Feeling Detective! Remember, characters are the people in the story, and their feelings are like colourful clues. By looking at what they do and how they act, you can understand the whole wonderful secret of the book!"
+    },
+    "assessmentQuestions": [
+      {
+        "id": "q1",
+        "type": "MCQ",
+        "questionText": "Oops! Your friend accidentally knocks over your tower of blocks. How might you feel?",
+        "hint": "Think about how it feels when something you worked hard on gets broken.",
+        "options": [
+          "Happy",
+          "Excited",
+          "Sad/Upset",
+          "Bored"
+        ],
+        "correctOptionIndex": 2,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q2",
+        "type": "FILL_BLANK",
+        "questionText": "Fill in the blank to complete the story.",
+        "hint": "When someone is feeling lonely, they might want company or a friend to talk to.",
+        "options": null,
+        "correctOptionIndex": null,
+        "sentenceWithBlank": "The little bunny felt very ___________ when all his friends went outside to play.",
+        "correctAnswer": "lonely",
+        "acceptableAnswers": [
+          "lonely"
+        ],
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q3",
+        "type": "MCQ",
+        "questionText": "Mia saw her friend struggling to carry a big pile of books. What does this show about Mia's feelings?",
+        "hint": "What is the kindest thing you can do when someone needs help?",
+        "options": [
+          "She doesn't care.",
+          "She feels scared.",
+          "She cares and wants to help.",
+          "She is angry at her friend."
+        ],
+        "correctOptionIndex": 2,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q4",
+        "type": "MCQ",
+        "questionText": "If your character, Leo, keeps whispering and giggling to himself while sitting alone, what might he be thinking?",
+        "hint": "Whispering often means someone is sharing a secret or something funny.",
+        "options": [
+          "He is very angry.",
+          "He is bored and sleeping.",
+          "He found something silly/funny.",
+          "He wants to leave the room."
+        ],
+        "correctOptionIndex": 2,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      }
+    ],
+    "status": "NOT_STARTED",
+    "starRating": null,
+    "xpEarned": null,
+    "createdAt": "2026-07-14T20:12:02.844275"
+  },
+  {
+    "id": "local-0017",
+    "courseId": "local-0003",
+    "childId": "arya-001",
+    "subject": "ENGLISH",
+    "unitName": "Reading Comprehension",
+    "topicName": "Predicting what happens next",
+    "sequenceOrder": 3,
+    "difficulty": "EASY",
+    "content": {
+      "title": "\ud83c\udf1f Story Detective Time: Guessing What Comes Next! \ud83d\udd75\ufe0f\u200d\u2640\ufe0f",
+      "introduction": "Hoo-hoo! Hello, amazing reader! I'm Hoot the Owl, and today we are going on a super fun mission. We are going to learn how to be expert story detectives who can guess what happens next!",
+      "sections": [
+        {
+          "heading": "What is Predicting?",
+          "body": "Predicting means using your brain like a magic crystal ball! It's guessing what might happen next, but it\u2019s not just random guessing. You use clues from the story to make your best guess. Think of it like following little breadcrumbs left by the author\u2014they show you where the story is going!",
+          "imageDescription": "A cartoon drawing of a child wearing a magnifying glass and pointing at a book, with glowing 'clue' arrows pointing ahead in the text.",
+          "imageUrl": null,
+          "funFact": "Predicting helps your brain get super strong! It\u2019s like lifting tiny weights for your mind."
+        },
+        {
+          "heading": "Look for Clues!",
+          "body": "When you read, slow down and become a clue hunter. Does the character look sad? Maybe they will cry next! Is it getting dark outside? The story might say it's time to go home. These little hints are your best friends because they help you make smart guesses instead of just guessing wildly.",
+          "imageDescription": "A picture showing three simple panels: 1) A character looking worried (Clue). 2) A thought bubble with a question mark (Prediction). 3) The next part of the story confirming the worry (Answer).",
+          "imageUrl": null,
+          "funFact": "Sometimes, your prediction is exactly right! Give yourself a big clap for being so smart!"
+        },
+        {
+          "heading": "Predicting in Real Life!",
+          "body": "Guessing isn't just for books! If you see dark, fluffy clouds gathering, what do you predict? That it might rain! If your mom packs an umbrella, she is giving you a clue. Predicting helps us understand the world around us, making us clever thinkers every day long.",
+          "imageDescription": "A split picture: one side shows dark storm clouds (the clue), and the other side shows a child holding an umbrella (the prediction/real-life outcome).",
+          "imageUrl": null,
+          "funFact": "Scientists predict things all the time\u2014like when the sun will rise tomorrow!"
+        },
+        {
+          "heading": "The Prediction Power Checklist!",
+          "body": "Next time you read, remember this checklist! First: Stop reading for a moment. Second: Look back at the last few sentences (the clues!). Third: Ask yourself, 'What makes sense here?' Making predictions is exciting because it means you are thinking like a brilliant detective!",
+          "imageDescription": "A simple graphic showing three steps in sequence: 1) A pause button icon. 2) An eye looking closely at text. 3) A lightbulb turning on above a head.",
+          "imageUrl": null,
+          "funFact": "The best detectives always take notes! You can 'take notes' by writing down your guess!"
+        }
+      ],
+      "summary": "Hoo-hoo! You did it! Now you know that predicting is all about being a clever detective who uses clues. Remember to pause, look closely at the text, and let your wonderful imagination do the rest! Keep reading and keep guessing!"
+    },
+    "assessmentQuestions": [
+      {
+        "id": "q1",
+        "type": "MCQ",
+        "questionText": "Look at this story: 'Lily was building a tower with blocks. The top block was very wobbly.' What do you think will happen next?",
+        "hint": "Think about what happens when something is wobbly or unstable.",
+        "options": [
+          "The tower gets taller and stronger.",
+          "A puppy runs by and knocks it over.",
+          "Lily carefully adds a big, flat base block.",
+          "It starts to rain very hard."
+        ],
+        "correctOptionIndex": 1,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q2",
+        "type": "FILL_BLANK",
+        "questionText": "Fill in the blank! The days of the week follow a pattern. If today is Thursday, tomorrow will be ___.",
+        "hint": "What day comes right after Thursday?",
+        "options": null,
+        "correctOptionIndex": null,
+        "sentenceWithBlank": "Today is Thursday, so tomorrow will be ________.",
+        "correctAnswer": "Friday",
+        "acceptableAnswers": [
+          "Friday"
+        ],
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q3",
+        "type": "MCQ",
+        "questionText": "A squirrel sees a pile of nuts and starts gathering them into its cheeks. What is the most likely thing the squirrel will do next?",
+        "hint": "Squirrels are busy gatherers! Where does it need to put those nuts?",
+        "options": [
+          "Play tag with a bird.",
+          "Sleep for the whole day.",
+          "Run back to its nest or hiding spot.",
+          "Ask another animal for help."
+        ],
+        "correctOptionIndex": 2,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q4",
+        "type": "MCQ",
+        "questionText": "If you leave an ice cube out on a warm day, what changes will happen to it?",
+        "hint": "Think about what happens when things get warm.",
+        "options": [
+          "It will turn into steam.",
+          "It will shrink and disappear.",
+          "It will melt and become water.",
+          "It will float away."
+        ],
+        "correctOptionIndex": 2,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      }
+    ],
+    "status": "NOT_STARTED",
+    "starRating": null,
+    "xpEarned": null,
+    "createdAt": "2026-07-14T20:13:18.983652"
+  },
+  {
+    "id": "local-0018",
+    "courseId": "local-0003",
+    "childId": "arya-001",
+    "subject": "ENGLISH",
+    "unitName": "Reading Comprehension",
+    "topicName": "Non-fiction \u2014 finding facts in a text",
+    "sequenceOrder": 4,
+    "difficulty": "EASY",
+    "content": {
+      "title": "\ud83d\udd0e Fact Detectives: Finding Real Truths in Books!",
+      "introduction": "Hoo-hoo! Hello there, super learner! I'm Hoot the Owl, and today we are going on a grand adventure. We are going to become amazing Fact Detectives who can find the real truth hidden inside books!",
+      "sections": [
+        {
+          "heading": "What is Non-Fiction?",
+          "body": "Non-fiction means 'real life stuff.' These kinds of books tell us facts about things that actually happened or exist. Think of it like a giant treasure chest filled with true knowledge! Instead of magic spells, we find real details, like how long a dinosaur lived or what makes rain fall.",
+          "imageDescription": "A brightly colored picture showing three items: 1) A book titled 'The Life Cycle of a Butterfly' (Non-Fiction), 2) A storybook with dragons and castles (Fiction), and 3) A magnifying glass pointing to the non-fiction book.",
+          "imageUrl": null,
+          "funFact": "Did you know that the word 'non-fiction' literally means 'not fiction'? It\u2019s all about reality!"
+        },
+        {
+          "heading": "Facts vs. Feelings (Stories)",
+          "body": "Sometimes books mix up facts and stories! A story might say, 'The purple unicorn flew to the moon.' But a fact book will say, 'The Moon is made of rock.' How do we know which is true? Facts can be proven with evidence\u2014like dates, names, or numbers. If it sounds too magical, it\u2019s probably just a fun story!",
+          "imageDescription": "A split picture: On one side (Stories), there are floating rainbows and smiling cartoon characters. On the other side (Facts), there is a clear photo of Earth from space with labels pointing out real features.",
+          "imageUrl": null,
+          "funFact": "Your brain is like a super-powered filing cabinet! When you learn facts, you put them neatly into labeled drawers so you never forget them."
+        },
+        {
+          "heading": "Becoming a Fact Detective!",
+          "body": "To find the best clues, look out for special things in the text. Can you spot names of people or places? Are there numbers, dates, or statistics (like 'It weighs 50 kilograms')? When you see these things, stop! You have found a strong clue that is probably a real fact. Always ask: 'Can I prove this?'",
+          "imageDescription": "A child wearing a detective hat and carrying a notebook with question marks drawn on it. The background shows open books filled with underlined keywords (like dates or numbers).",
+          "imageUrl": null,
+          "funFact": "The biggest detectives never give up! If you don't know the answer right away, just underline what you *do* know."
+        }
+      ],
+      "summary": "You did it! You are now a super Fact Detective! Remember that non-fiction books are your guides to real truth. Always look for clues like names, numbers, and things we can prove. Keep reading, keep questioning, and keep learning amazing facts!"
+    },
+    "assessmentQuestions": [
+      {
+        "id": "q1",
+        "type": "MCQ",
+        "questionText": "If you are reading a book about sharks, where should you look to find out how big they are?",
+        "hint": "Think about what the book itself tells you!",
+        "options": [
+          "What I already know from movies.",
+          "My best guess.",
+          "The words and pictures written in the text.",
+          "Asking my friend who is not reading."
+        ],
+        "correctOptionIndex": 2,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q2",
+        "type": "FILL_BLANK",
+        "questionText": "Fill in the blank based on what you read about rainforests.",
+        "hint": "These plants help keep the air clean!",
+        "options": null,
+        "correctOptionIndex": null,
+        "sentenceWithBlank": "Rainforest trees are very important because they produce lots of ___ for us to breathe.",
+        "correctAnswer": "oxygen",
+        "acceptableAnswers": [
+          "oxygen",
+          "Oxygen"
+        ],
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q3",
+        "type": "MCQ",
+        "questionText": "A text says, 'Dogs make wonderful pets.' Is this a fact or an opinion?",
+        "hint": "Facts can be proven true. Opinions are feelings.",
+        "options": [
+          "It is a scientific fact because all dogs are great.",
+          "It is an opinion because it uses the word 'wonderful'.",
+          "It is always a fact, no matter what the text says.",
+          "I cannot tell if it is either."
+        ],
+        "correctOptionIndex": 1,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      },
+      {
+        "id": "q4",
+        "type": "MCQ",
+        "questionText": "If a book tells you that polar bears live in the Arctic, what does this teach you?",
+        "hint": "It gives you specific information about where they belong.",
+        "options": [
+          "That I love reading books.",
+          "How to build an igloo.",
+          "A fact about the bear's natural home.",
+          "What polar bears eat for dinner."
+        ],
+        "correctOptionIndex": 2,
+        "sentenceWithBlank": null,
+        "correctAnswer": null,
+        "acceptableAnswers": null,
+        "draggableItems": null,
+        "dropTargets": null,
+        "correctMapping": null
+      }
+    ],
+    "status": "NOT_STARTED",
+    "starRating": null,
+    "xpEarned": null,
+    "createdAt": "2026-07-14T20:14:36.856217"
+  }
+]
