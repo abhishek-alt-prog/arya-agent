@@ -260,7 +260,7 @@ Return a JSON object with this exact structure:
   "summary": "A cheerful recap of what was learned (2-3 sentences)"
 }}
 
-Create 3-4 sections. Make the tone warm and playful."""
+Create 7-10 sections to provide a deep, comprehensive lesson. Make the tone warm and playful."""
 
         try:
             data = self.ollama.generate_json(prompt, system=LESSON_SYSTEM_PROMPT)
