@@ -174,7 +174,7 @@ class AgentService:
                 actions.append(decision)
 
                 # Build student understanding profile from past assessments
-                student_context = self._build_student_context(topic, subject_results)
+                student_context = self._build_student_context(topic, results)
 
                 # Execute the decision
                 if decision["action"] == "advance":
