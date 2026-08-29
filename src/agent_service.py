@@ -173,6 +173,9 @@ class AgentService:
                 decision = self._decide_action(mastery, current_diff, topic, i, len(topics))
                 actions.append(decision)
 
+                # Build student understanding profile from past assessments
+                student_context = self._build_student_context(topic, subject_results)
+
                 # Execute the decision
                 if decision["action"] == "advance":
                     # Generate lessons for the next topic
@@ -186,6 +189,7 @@ class AgentService:
                             unit_name=unit_name,
                             topics=[next_topic],
                             difficulty=next_diff,
+                            student_context=student_context,
                         )
                         logger.info(
                             "Advanced: generated %s lesson at %s",
@@ -201,6 +205,7 @@ class AgentService:
                         unit_name=unit_name,
                         topics=[topic],
                         difficulty=decision.get("new_difficulty", current_diff),
+                        student_context=student_context,
                     )
                     logger.info(
                         "Reinforced: regenerated %s at %s",
@@ -217,6 +222,7 @@ class AgentService:
                         unit_name=unit_name,
                         topics=[topic],
                         difficulty=easier,
+                        student_context=student_context,
                     )
                     logger.info(
                         "Simplified: regenerated %s at %s",
@@ -224,6 +230,89 @@ class AgentService:
                     )
 
         return actions
+
+    def _build_student_context(
+        self,
+        topic: str,
+        results: list[AssessmentResult],
+    ) -> str:
+        """
+        Build a student understanding profile from recent assessment results.
+
+        Analyses incorrect answers, time spent, and misconceptions to create
+        a plain-text summary that can be injected into LLM prompts for
+        personalized lesson generation.
+        """
+        # Filter results relevant to this topic
+        topic_results = [r for r in results if r.topic_name == topic]
+        if not topic_results:
+            return ""
+
+        # Use the most recent assessment (or last 2 if available)
+        recent = sorted(
+            topic_results,
+            key=lambda r: r.submitted_at or "",
+            reverse=True,
+        )[:2]
+
+        struggled: list[str] = []      # Wrong answers
+        hesitated: list[str] = []      # Correct but slow (>20s)
+        confident: list[str] = []      # Correct and fast
+
+        SLOW_THRESHOLD_SECS = 20
+
+        for result in recent:
+            for ans in result.answers:
+                time_str = ""
+                if ans.time_spent_seconds is not None:
+                    time_str = f" (took {ans.time_spent_seconds}s)"
+
+                if not ans.correct:
+                    struggled.append(
+                        f"  - Q: \"{ans.question_id}\" — "
+                        f"Child answered \"{ans.given_answer}\" "
+                        f"but correct answer was \"{ans.correct_answer}\"{time_str}"
+                    )
+                elif ans.time_spent_seconds and ans.time_spent_seconds > SLOW_THRESHOLD_SECS:
+                    hesitated.append(
+                        f"  - Q: \"{ans.question_id}\" — "
+                        f"Answered correctly but hesitated{time_str}"
+                    )
+                else:
+                    confident.append(
+                        f"  - Q: \"{ans.question_id}\" — "
+                        f"Answered correctly and quickly{time_str}"
+                    )
+
+        if not struggled and not hesitated:
+            # Child did well — minimal context needed
+            return ""
+
+        lines = [f'STUDENT UNDERSTANDING PROFILE FOR "{topic}":']
+
+        if struggled:
+            lines.append("MISCONCEPTIONS / WRONG ANSWERS:")
+            lines.extend(struggled)
+
+        if hesitated:
+            lines.append("HESITATED (correct but unsure):")
+            lines.extend(hesitated)
+
+        if confident:
+            lines.append("CONFIDENT WITH (keep brief):")
+            # Only include a few to keep prompt short
+            lines.extend(confident[:3])
+
+        score_summary = recent[0]
+        lines.append(
+            f"OVERALL: {score_summary.score}/{score_summary.total_questions} correct, "
+            f"{score_summary.star_rating}★"
+        )
+
+        context = "\n".join(lines)
+        logger.info("Built student context for '%s': %d struggled, %d hesitated, %d confident",
+                    topic, len(struggled), len(hesitated), len(confident))
+        return context
 
     def _decide_action(
         self,

@@ -148,6 +148,7 @@ class AnswerRecord(BaseModel):
     given_answer: str = Field(alias="givenAnswer")
     correct_answer: str = Field(alias="correctAnswer")
     correct: bool
+    time_spent_seconds: Optional[int] = Field(alias="timeSpentSeconds", default=None)
 
     model_config = {"populate_by_name": True}
 

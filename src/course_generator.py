@@ -120,6 +120,7 @@ class CourseGenerator:
         unit_name: str,
         topics: list[str],
         difficulty: Difficulty = Difficulty.EASY,
+        student_context: str = "",
     ) -> list[Lesson]:
         """
         Generate one lesson + assessment per topic in the unit.
@@ -131,7 +132,7 @@ class CourseGenerator:
             logger.info("Generating lesson: %s / %s / %s", subject.value, unit_name, topic)
 
             # Generate lesson content via LLM
-            content = self._generate_lesson_content(subject, unit_name, topic, difficulty)
+            content = self._generate_lesson_content(subject, unit_name, topic, difficulty, student_context)
 
             # Generate media for the content
             logger.info("Generating media for lesson: %s", topic)
@@ -148,7 +149,7 @@ class CourseGenerator:
                 content.summary_audio_url = self.media_gen.generate_audio(content.summary, prefix="summary")
 
             # Generate assessment questions via LLM
-            questions = self._generate_questions(subject, unit_name, topic, difficulty)
+            questions = self._generate_questions(subject, unit_name, topic, difficulty, student_context)
 
             for q in questions:
                 if q.question_text:
@@ -220,12 +221,29 @@ class CourseGenerator:
         unit_name: str,
         topic: str,
         difficulty: Difficulty,
+        student_context: str = "",
     ) -> LessonContent:
-        """Use Gemma 4 to generate lesson content."""
+        """Use Gemma 4 to generate lesson content, personalized with student context."""
+
+        # Build the personalization block
+        context_block = ""
+        if student_context:
+            context_block = f"""
+
+{student_context}
+
+IMPORTANT PERSONALIZATION INSTRUCTIONS:
+- Spend MORE time explaining concepts the student struggled with or had misconceptions about.
+- Use DIFFERENT analogies and examples than a typical lesson would — the student already saw the standard explanation and didn't fully grasp it.
+- For concepts the student is confident with, keep explanations brief and move on.
+- Do NOT explicitly say "you got this wrong last time". Instead, naturally weave in extra explanation, practice examples, and fun facts for the weak areas.
+- If the student had a specific misconception (e.g. thought 1/4 > 1/3), directly address that misunderstanding with a clear, child-friendly counter-example."""
+
         prompt = f"""Create a lesson for a 7-year-old about: "{topic}"
 Subject: {subject.value}
 Unit: {unit_name}
 Difficulty: {difficulty.value}
+{context_block}
 
 Return a JSON object with this exact structure:
 {{
@@ -257,11 +275,27 @@ Create 3-4 sections. Make the tone warm and playful."""
         unit_name: str,
         topic: str,
         difficulty: Difficulty,
+        student_context: str = "",
     ) -> list[Question]:
-        """Use Gemma 4 to generate assessment questions."""
+        """Use Gemma 4 to generate assessment questions, targeted at weak areas."""
+
+        # Build targeting instructions from student context
+        targeting_block = ""
+        if student_context:
+            targeting_block = f"""
+
+{student_context}
+
+TARGETING INSTRUCTIONS:
+- Create at least 1-2 questions that specifically test the concepts the student previously struggled with or hesitated on.
+- Phrase these questions differently from the previous assessment so the student is tested on understanding, not memory.
+- Include 1-2 questions on concepts the student was confident with, to maintain their confidence.
+- Do NOT make the questions easier just because the student struggled — test the same concept but approach it from a different angle."""
+
         prompt = f"""Create 4 quiz questions for a 7-year-old about: "{topic}"
 Subject: {subject.value}
 Difficulty: {difficulty.value}
+{targeting_block}
 
 Return a JSON array with this exact structure:
 [
