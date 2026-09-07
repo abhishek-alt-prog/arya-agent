@@ -13,5 +13,9 @@ OLLAMA_EVAL_MODEL = os.getenv("OLLAMA_EVAL_MODEL", "qwen2.5:3b")
 DEFAULT_CHILD_ID = os.getenv("DEFAULT_CHILD_ID", "")
 AGENT_VERSION = os.getenv("AGENT_VERSION", "0.1.0")
 
+# Stable Diffusion image generation
+SD_MODEL_ID = os.getenv("SD_MODEL_ID", "stabilityai/sdxl-turbo")
+SD_INFERENCE_STEPS = int(os.getenv("SD_INFERENCE_STEPS", "4"))
+
 # "local" = write JSON files (no BFF needed), "bff" = call BFF REST API
 STORAGE_MODE = os.getenv("STORAGE_MODE", "local")
