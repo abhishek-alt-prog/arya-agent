@@ -81,6 +81,15 @@ class BFFClient:
         logger.info("Upserted %d lessons", len(lessons))
         return resp.json()
 
+    def get_lessons_for_subject(self, child_id: str, subject: Subject) -> list[dict]:
+        resp = self.session.get(
+            f"{self.base_url}/api/children/{child_id}/lessons/{subject.value}"
+        )
+        if resp.status_code == 404:
+            return []
+        resp.raise_for_status()
+        return resp.json()
+
     # ── Assessment results (agent endpoints) ─────────────────────────
 
     def get_assessment_results(self, child_id: str) -> list[AssessmentResult]:

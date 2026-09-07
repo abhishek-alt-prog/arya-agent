@@ -168,3 +168,56 @@ class AssessmentResult(BaseModel):
     submitted_at: Optional[str] = Field(alias="submittedAt", default=None)
 
     model_config = {"populate_by_name": True}
+
+
+# ── Lesson–Assessment Alignment & Visual Evaluation ──────────────────
+
+class QuestionAlignment(BaseModel):
+    """Per-question alignment result from the evaluator."""
+    question_id: str = Field(alias="questionId")
+    aligned: bool
+    reason: str = ""
+
+    model_config = {"populate_by_name": True}
+
+
+class AlignmentResult(BaseModel):
+    """
+    Overall alignment evaluation between lesson content and assessment questions.
+    Produced by content_evaluator.evaluate_alignment().
+    """
+    all_aligned: bool = Field(alias="allAligned", default=False)
+    questions: list[QuestionAlignment] = []
+    misaligned_ids: list[str] = Field(alias="misalignedIds", default_factory=list)
+    summary: str = ""
+
+    model_config = {"populate_by_name": True}
+
+
+class VisualEvaluation(BaseModel):
+    """Evaluation of an image/visual description for instructional utility."""
+    section_index: int = Field(alias="sectionIndex")
+    heading: str
+    image_description: Optional[str] = Field(alias="imageDescription", default=None)
+    is_instructional: bool = Field(alias="isInstructional", default=True)
+    pedagogical_purpose: str = Field(alias="pedagogicalPurpose", default="")
+    critique: str = ""
+    improved_description: Optional[str] = Field(alias="improvedDescription", default=None)
+
+    model_config = {"populate_by_name": True}
+
+
+class ModelOutputEvaluation(BaseModel):
+    """
+    Comprehensive evaluation of generated lesson content, educational visuals,
+    and assessment questions.
+    """
+    passed: bool = True
+    lesson_quality_score: float = Field(alias="lessonQualityScore", default=1.0)
+    visual_evaluations: list[VisualEvaluation] = Field(alias="visualEvaluations", default_factory=list)
+    question_alignments: list[QuestionAlignment] = Field(alias="questionAlignments", default_factory=list)
+    misaligned_question_ids: list[str] = Field(alias="misalignedQuestionIds", default_factory=list)
+    unhelpful_visual_indices: list[int] = Field(alias="unhelpfulVisualIndices", default_factory=list)
+    summary: str = ""
+
+    model_config = {"populate_by_name": True}

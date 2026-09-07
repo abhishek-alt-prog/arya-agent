@@ -1,6 +1,13 @@
 """
 Course Generator — uses the curriculum skeleton + Gemma 4 to generate
 lesson content and assessment questions for each topic.
+
+Content pipeline:
+  1. Generate lesson content via LLM
+  2. Generate assessment questions via LLM (with lesson content as context)
+  3. Validate alignment between lesson and questions
+  4. On misalignment → retry questions, then retry both (max 2 retries)
+  5. Generate media (images + audio) into structured asset directories
 """
 from __future__ import annotations
 
@@ -10,6 +17,13 @@ from datetime import datetime
 from typing import Optional
 
 from .config import AGENT_VERSION
+from .content_evaluator import (
+    MAX_ALIGNMENT_RETRIES,
+    apply_visual_improvements,
+    build_lesson_context_for_questions,
+    evaluate_alignment,
+    evaluate_model_output,
+)
 from .curriculum import CURRICULUM, get_units_for_subject
 from .models import (
     ContentSection,
@@ -30,12 +44,16 @@ logger = logging.getLogger(__name__)
 # ── System prompts ───────────────────────────────────────────────────
 
 LESSON_SYSTEM_PROMPT = """\
-You are an expert primary-school teacher creating a lesson for a 7-year-old child.
+You are an expert primary-school teacher and educational visual designer creating a lesson for a 7-year-old child.
 Your writing style MUST be:
 - Fun, warm, and encouraging
 - Use simple words (Year 3 reading level)
 - Include colourful analogies and real-world examples a child can relate to
 - End with a cheerful summary
+
+EDUCATIONAL VISUALS (CRITICAL RULE):
+- Every image description MUST be a clear educational visual aid or explanatory diagram that directly helps the 7-year-old child understand the specific concept being taught in that section (e.g. labelled diagram, process with arrows, countable groups of objects, place-value blocks, fractions breakdown).
+- NEVER generate decorative drawings, generic cartoons, or pictures of a mascot smiling or waving. If a section does not need a visual explanation, set imageDescription to null.
 
 You will respond ONLY with valid JSON."""
 
@@ -44,6 +62,11 @@ You are an expert primary-school teacher creating a short quiz for a 7-year-old.
 Create questions that test understanding (not memorisation).
 Keep language simple, warm, and encouraging.
 Include a mix of question types.
+
+CRITICAL RULE: Every question MUST be answerable using ONLY the lesson content
+provided. Do NOT ask about concepts, vocabulary, or facts that are not
+explicitly covered in the lesson.
+
 You will respond ONLY with valid JSON."""
 
 
@@ -124,36 +147,52 @@ class CourseGenerator:
     ) -> list[Lesson]:
         """
         Generate one lesson + assessment per topic in the unit.
-        Uses Gemma 4 to create the content.
+        Uses Gemma 4 to create the content, then validates alignment.
         """
         lessons: list[Lesson] = []
 
         for seq, topic in enumerate(topics):
             logger.info("Generating lesson: %s / %s / %s", subject.value, unit_name, topic)
 
-            # Generate lesson content via LLM
-            content = self._generate_lesson_content(subject, unit_name, topic, difficulty, student_context)
+            # ── Generate & align lesson + questions ──────────────
+            content, questions = self._generate_aligned_content(
+                subject, unit_name, topic, difficulty, student_context,
+            )
 
-            # Generate media for the content
+            # ── Generate media for the content ───────────────────
+            # Media context for structured asset directories
+            media_ctx = dict(
+                subject=subject.value,
+                unit_name=unit_name,
+                topic_name=topic,
+            )
+
             logger.info("Generating media for lesson: %s", topic)
             if content.introduction:
-                content.audio_url = self.media_gen.generate_audio(content.introduction, prefix="intro")
-            
+                content.audio_url = self.media_gen.generate_audio(
+                    content.introduction, prefix="intro", **media_ctx,
+                )
+
             for section in content.sections:
                 if section.body:
-                    section.audio_url = self.media_gen.generate_audio(section.body, prefix="section")
+                    section.audio_url = self.media_gen.generate_audio(
+                        section.body, prefix="section", **media_ctx,
+                    )
                 if section.image_description:
-                    section.image_url = self.media_gen.generate_image(section.image_description, prefix="img")
+                    section.image_url = self.media_gen.generate_image(
+                        section.image_description, prefix="img", **media_ctx,
+                    )
 
             if content.summary:
-                content.summary_audio_url = self.media_gen.generate_audio(content.summary, prefix="summary")
-
-            # Generate assessment questions via LLM
-            questions = self._generate_questions(subject, unit_name, topic, difficulty, student_context)
+                content.summary_audio_url = self.media_gen.generate_audio(
+                    content.summary, prefix="summary", **media_ctx,
+                )
 
             for q in questions:
                 if q.question_text:
-                    q.audio_url = self.media_gen.generate_audio(q.question_text, prefix="question")
+                    q.audio_url = self.media_gen.generate_audio(
+                        q.question_text, prefix="question", **media_ctx,
+                    )
 
             lesson = Lesson(
                 courseId=course_id,
@@ -200,6 +239,14 @@ class CourseGenerator:
             if not units:
                 continue
 
+            existing_lessons = self.bff.get_lessons_for_subject(child_id, subject)
+            if existing_lessons:
+                logger.info(
+                    "Lessons already exist for %s (%d lessons), skipping",
+                    subject.value, len(existing_lessons),
+                )
+                continue
+
             first_unit = units[0]
             lessons = self.generate_lessons_for_unit(
                 child_id=child_id,
@@ -212,6 +259,106 @@ class CourseGenerator:
             all_lessons.extend(lessons)
 
         return all_lessons
+
+    # ── Aligned content generation ───────────────────────────────────
+
+    def _generate_aligned_content(
+        self,
+        subject: Subject,
+        unit_name: str,
+        topic: str,
+        difficulty: Difficulty,
+        student_context: str = "",
+    ) -> tuple[LessonContent, list[Question]]:
+        """
+        Generate lesson content and assessment questions with comprehensive
+        model output evaluation (pedagogical visual utility and lesson alignment).
+
+        Retries on misalignment or unhelpful visuals:
+        Retry 1: Apply visual improvements + regenerate misaligned questions.
+        Retry 2: Regenerate both lesson and questions from scratch.
+
+        Returns the best (lesson, questions) pair available.
+        """
+        # ── Initial generation ───────────────────────────────────
+        content = self._generate_lesson_content(
+            subject, unit_name, topic, difficulty, student_context,
+        )
+        questions = self._generate_questions(
+            subject, unit_name, topic, difficulty, student_context,
+            lesson_content=content,
+        )
+
+        # ── Model output evaluation loop ─────────────────────────
+        for retry in range(MAX_ALIGNMENT_RETRIES):
+            eval_result = evaluate_model_output(
+                content, questions, subject, topic, self.ollama,
+            )
+
+            # Apply educational improvements to visuals (replace decorative visuals with diagrams/models or prune)
+            content = apply_visual_improvements(content, eval_result)
+
+            if eval_result.passed:
+                logger.info(
+                    "Model output evaluation PASSED for '%s' (retry=%d)",
+                    topic, retry,
+                )
+                return content, questions
+
+            logger.warning(
+                "Model output evaluation flagged issues for '%s': %d misaligned questions, %d unhelpful visuals (retry %d/%d)",
+                topic,
+                len(eval_result.misaligned_question_ids),
+                len(eval_result.unhelpful_visual_indices),
+                retry + 1,
+                MAX_ALIGNMENT_RETRIES,
+            )
+
+            # Build misaligned question feedback
+            feedback_notes = []
+            for qa in eval_result.question_alignments:
+                if not qa.aligned:
+                    feedback_notes.append(f"- Question {qa.question_id}: {qa.reason}")
+            feedback_str = "\n".join(feedback_notes)
+            combined_context = student_context
+            if feedback_str:
+                combined_context = (
+                    f"{student_context}\n\n"
+                    f"PREVIOUS QUESTIONS FAILED ALIGNMENT:\n{feedback_str}\n"
+                    f"CRITICAL: Every question must be directly answerable from the lesson text."
+                )
+
+            if retry == 0:
+                # First retry: regenerate questions with evaluation feedback
+                logger.info("Retrying: regenerating questions with evaluation feedback")
+                questions = self._generate_questions(
+                    subject, unit_name, topic, difficulty, combined_context,
+                    lesson_content=content,
+                )
+            else:
+                # Second retry: regenerate everything
+                logger.info("Retrying: regenerating both lesson and questions")
+                content = self._generate_lesson_content(
+                    subject, unit_name, topic, difficulty, student_context,
+                )
+                questions = self._generate_questions(
+                    subject, unit_name, topic, difficulty, student_context,
+                    lesson_content=content,
+                )
+
+        # Final check after all retries
+        final_result = evaluate_model_output(content, questions, subject, topic, self.ollama)
+        content = apply_visual_improvements(content, final_result)
+        if not final_result.passed:
+            logger.warning(
+                "Evaluation still flagged issues for '%s' after %d retries. "
+                "Using best available content. Misaligned: %s, Unhelpful visuals: %s",
+                topic, MAX_ALIGNMENT_RETRIES,
+                final_result.misaligned_question_ids,
+                final_result.unhelpful_visual_indices,
+            )
+
+        return content, questions
 
     # ── LLM content generation ───────────────────────────────────────
 
@@ -253,7 +400,7 @@ Return a JSON object with this exact structure:
     {{
       "heading": "Section heading",
       "body": "Explanation text (3-5 sentences, simple language)",
-      "imageDescription": "Description of an illustration that would help explain this",
+      "imageDescription": "An educational visual aid or explanatory diagram directly illustrating this concept (e.g. labeled anatomical parts, step-by-step process with arrows, place-value blocks, countable groups of objects). MUST NOT be a decorative picture or mascot waving. If the section does not benefit from an instructional diagram, set to null.",
       "funFact": "An optional fun or surprising fact"
     }}
   ],
@@ -276,8 +423,20 @@ Create 7-10 sections to provide a deep, comprehensive lesson. Make the tone warm
         topic: str,
         difficulty: Difficulty,
         student_context: str = "",
+        lesson_content: LessonContent | None = None,
     ) -> list[Question]:
-        """Use Gemma 4 to generate assessment questions, targeted at weak areas."""
+        """
+        Use Gemma 4 to generate assessment questions.
+
+        When lesson_content is provided, the questions are scoped strictly
+        to the concepts covered in the lesson.  This is the primary mechanism
+        for preventing misaligned questions.
+        """
+
+        # Build lesson context block (most important for alignment)
+        lesson_block = ""
+        if lesson_content:
+            lesson_block = "\n\n" + build_lesson_context_for_questions(lesson_content)
 
         # Build targeting instructions from student context
         targeting_block = ""
@@ -295,6 +454,7 @@ TARGETING INSTRUCTIONS:
         prompt = f"""Create 4 quiz questions for a 7-year-old about: "{topic}"
 Subject: {subject.value}
 Difficulty: {difficulty.value}
+{lesson_block}
 {targeting_block}
 
 Return a JSON array with this exact structure:

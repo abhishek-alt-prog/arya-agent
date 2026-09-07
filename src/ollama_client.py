@@ -33,10 +33,12 @@ class OllamaClient:
         system: str | None = None,
         temperature: float = 0.7,
         max_tokens: int = 4096,
+        model: str | None = None,
     ) -> str:
         """Send a prompt and return the full text response."""
+        target_model = model or self.model
         payload: dict[str, Any] = {
-            "model": self.model,
+            "model": target_model,
             "prompt": prompt,
             "stream": False,
             "options": {
@@ -47,7 +49,7 @@ class OllamaClient:
         if system:
             payload["system"] = system
 
-        logger.debug("Ollama request → model=%s  tokens=%d", self.model, max_tokens)
+        logger.debug("Ollama request → model=%s  tokens=%d", target_model, max_tokens)
 
         resp = requests.post(
             f"{self.base_url}/api/generate",
@@ -64,13 +66,14 @@ class OllamaClient:
         system: str | None = None,
         temperature: float = 0.4,
         max_tokens: int = 4096,
+        model: str | None = None,
     ) -> dict | list:
         """
         Generate and parse JSON output from the model.
         Retries once if the first response isn't valid JSON.
         """
         for attempt in range(2):
-            raw = self.generate(prompt, system, temperature, max_tokens)
+            raw = self.generate(prompt, system, temperature, max_tokens, model=model)
             try:
                 # Try to extract JSON from the response
                 return self._extract_json(raw)

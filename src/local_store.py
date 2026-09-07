@@ -154,6 +154,13 @@ class LocalStore:
         logger.info("Upserted %d lessons", len(saved))
         return saved
 
+    def get_lessons_for_subject(self, child_id: str, subject: Subject) -> list[dict]:
+        path = self.data_dir / f"lessons_{child_id}.json"
+        data = _load_json(path)
+        if isinstance(data, list):
+            return [l for l in data if l.get("subject") == subject.value]
+        return []
+
     # ── Assessment results ───────────────────────────────────────────
 
     def get_assessment_results(self, child_id: str) -> list[AssessmentResult]:

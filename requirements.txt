@@ -6,5 +6,7 @@ torch
 transformers
 edge-tts
 nest_asyncio
-
+numpy
+Pillow
 accelerate
+pytest
