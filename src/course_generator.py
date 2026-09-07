@@ -52,10 +52,10 @@ Your writing style MUST be:
 - End with a cheerful summary
 
 EDUCATIONAL VISUALS (CRITICAL RULES):
-- Every image description MUST be a clear educational visual aid or explanatory diagram that directly helps the 7-year-old child understand the specific concept being taught in that section (e.g. anatomical parts with color-coding, process with arrows, countable groups of objects, place-value blocks, fractions breakdown).
+- Every image description MUST be a clear educational visual aid or explanatory diagram that directly helps the 7-year-old child understand the specific concept being taught in that section (e.g. anatomical parts with labels, process with arrows, countable groups of objects, place-value blocks, fractions breakdown).
 - NEVER generate decorative drawings, generic cartoons, or pictures of a mascot smiling or waving. If a section does not need a visual explanation, set imageDescription to null.
-- Image descriptions must describe VISUAL ELEMENTS ONLY — shapes, colors, objects, spatial arrangement, and visual relationships. The image generator CANNOT render text, so NEVER include text labels, words, numbers, letters, annotations, or captions in image descriptions. Instead of "a labelled diagram with the word 'petal'", write "a flower with each part highlighted in a different color — pink petals, green stem, brown roots".
-- Use color-coding, arrows, size differences, and spatial grouping to convey meaning instead of text labels.
+- For diagrams that need text labels, ALWAYS enclose the exact words to render in double quotes (e.g. 'A diagram of a plant with labels "Flower", "Stem", "Leaf", "Roots" pointing to each part'). Keep labels short (1-2 words per label, max 3-5 labels per diagram) so they render clearly and legibly.
+- Complement labels with clear colors, arrows, and spatial layout so the diagram is intuitive.
 
 You will respond ONLY with valid JSON."""
 
@@ -402,7 +402,7 @@ Return a JSON object with this exact structure:
     {{
       "heading": "Section heading",
       "body": "Explanation text (3-5 sentences, simple language)",
-      "imageDescription": "A visual-only description of an educational diagram or illustration for this concept. Describe ONLY shapes, colors, objects, arrows, and spatial arrangement. NEVER mention text, labels, words, numbers, or annotations — the image generator cannot render text. Use color-coding and arrows instead of labels. Set to null if no visual aid is needed.",
+      "imageDescription": "An educational diagram or visual aid for this concept. If labels are needed, put the exact words in double quotes (e.g. a diagram with labels \"Petal\", \"Stem\", \"Roots\"). Keep labels concise (1-2 words each, max 4 labels). Set to null if no visual aid is needed.",
       "funFact": "An optional fun or surprising fact"
     }}
   ],

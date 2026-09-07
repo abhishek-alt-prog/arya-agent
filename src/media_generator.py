@@ -112,38 +112,31 @@ def is_blank_image(image: "Image.Image") -> bool:
 
 
 # ── Prompt transformation ────────────────────────────────────────────
-# Style prefix injected before every prompt to steer SDXL Turbo toward
-# clean educational visuals without text rendering.
+# Style prefix injected before every prompt to steer SD 3.5 toward
+# clean educational infographic diagrams with legible English labels.
 _STYLE_PREFIX = (
-    "flat vector educational illustration for children, "
-    "clean simple design, no text, no labels, no letters, no words, no writing, "
-    "no numbers, no captions, no annotations, "
+    "clear educational diagram illustration for children, "
+    "clean vector infographic style, legible text labels in English, "
+    "white background, high quality, sharp lines, "
 )
 
 # Quality suffix appended after the subject matter.
 _QUALITY_SUFFIX = (
-    ", vibrant colors, white background, sharp lines, "
-    "high quality digital art, simple shapes"
+    ", vibrant colors, sharp typography, clean design, simple shapes"
 )
 
 # Alternative style tokens used on retry to get a different result.
 _RETRY_STYLE_PREFIX = (
-    "colorful storybook illustration for young children, "
-    "cute friendly style, no text, no labels, no letters, no words, "
-    "no writing, no numbers, no captions, "
+    "colorful educational textbook diagram for children, "
+    "high contrast, clear bold English labels, "
+    "white background, sharp details, "
 )
 
-# Phrases in LLM descriptions that ask for text rendering — strip them.
-_TEXT_INSTRUCTION_PATTERNS = [
-    r"(?i)\blabel{1,2}ed?\b",
-    r"(?i)\bwith\s+(the\s+)?(word|text|label|letter|number|caption|annotation|title)s?\b",
-    r"(?i)\bsaying\b",
-    r"(?i)\bthat\s+(says?|reads?)\b",
-    r"(?i)\b(word|text|label|caption|annotation|title)s?\s+(showing|reading|saying)\b",
-    r"(?i)\bwrite\b",
-    r"(?i)\bwritten\b",
-    r"""(?i)["'][^"']{1,30}["']""",  # quoted text like "petal" or 'petal'
-]
+# Negative prompt to discourage garbled/distorted lettering.
+DEFAULT_NEGATIVE_PROMPT = (
+    "blurry, distorted text, misspelled words, illegible letters, "
+    "ugly handwriting, deformed, low quality, dark background, watermark"
+)
 
 
 def _transform_prompt_for_diffusion(
@@ -152,27 +145,27 @@ def _transform_prompt_for_diffusion(
     use_retry_style: bool = False,
 ) -> str:
     """
-    Transform an LLM-generated image description into an SDXL-optimized prompt.
+    Transform an LLM-generated image description into an SD 3.5-optimized prompt.
 
     This does three things:
-    1. Strips instructions that ask the model to render text (labels, captions, etc.)
-    2. Prepends style tokens for clean educational illustrations
-    3. Appends quality tokens for sharp, vibrant output
+    1. Normalizes single quotes / smart quotes around label words into double quotes
+       for SD 3.5's T5 text encoder.
+    2. Prepends style tokens for clean educational illustrations with clear typography.
+    3. Appends quality tokens for sharp lines and vibrant colors.
 
-    The retry variant uses a different visual style to get varied results on
-    blank-image retries.
+    The retry variant uses a higher-contrast textbook diagram style.
     """
     cleaned = raw_description.strip()
 
-    # Remove text-rendering instructions
-    for pattern in _TEXT_INSTRUCTION_PATTERNS:
-        cleaned = re.sub(pattern, "", cleaned)
+    # Normalize smart quotes and single quotes around labels into double quotes
+    # e.g., 'Petal' or ‘Petal’ -> "Petal"
+    cleaned = re.sub(r"[`'‘’“](\b[\w\s-]{1,25}\b)['‘’”]", r'"\1"', cleaned)
 
-    # Collapse whitespace left behind by removals
+    # Collapse excessive whitespace
     cleaned = re.sub(r"\s{2,}", " ", cleaned).strip(" ,.")
 
     if not cleaned:
-        cleaned = "educational diagram"
+        cleaned = "educational diagram with clear labels"
 
     prefix = _RETRY_STYLE_PREFIX if use_retry_style else _STYLE_PREFIX
     return f"{prefix}{cleaned}{_QUALITY_SUFFIX}"
@@ -183,15 +176,21 @@ class MediaGenerator:
         self.image_pipeline = None
 
     def _load_image_pipeline(self):
-        """Lazy load the SDXL Turbo pipeline to save memory."""
+        """Lazy load the Stable Diffusion pipeline to save memory."""
         if self.image_pipeline is None:
             from .config import SD_MODEL_ID
             logger.info("Loading Stable Diffusion pipeline (%s)...", SD_MODEL_ID)
             from diffusers import AutoPipelineForText2Image
             import torch
 
-            # Use CPU or MPS (Apple Silicon) if available
-            device = "mps" if torch.backends.mps.is_available() else "cpu"
+            # Use CUDA, MPS (Apple Silicon), or CPU
+            device = (
+                "cuda"
+                if torch.cuda.is_available()
+                else "mps"
+                if torch.backends.mps.is_available()
+                else "cpu"
+            )
 
             # IMPORTANT: Always use float32 on MPS — float16 causes blank /
             # black images on Apple Silicon due to numerical instability.
@@ -221,12 +220,12 @@ class MediaGenerator:
         static assets folder.
 
         The raw LLM description is transformed into an SD-optimized prompt
-        that avoids text rendering and uses educational illustration style tokens.
+        with clear typography styling and double-quoted labels for legible rendering.
 
         Returns the URL path to the generated image, or None if generation
         failed after retries (so the lesson doesn't link a broken image).
         """
-        from .config import SD_INFERENCE_STEPS
+        from .config import SD_INFERENCE_STEPS, SD_GUIDANCE_SCALE
 
         self._load_image_pipeline()
         logger.info("Generating image for prompt: %s", prompt)
@@ -241,12 +240,11 @@ class MediaGenerator:
         for attempt in range(1, MAX_IMAGE_RETRIES + 1):
             logger.info("Image generation attempt %d/%d", attempt, MAX_IMAGE_RETRIES)
 
-            # SDXL Turbo: guidance_scale=0.0 (distilled without CFG),
-            # no negative_prompt (incompatible with turbo distillation).
             image = self.image_pipeline(
                 full_prompt,
+                negative_prompt=DEFAULT_NEGATIVE_PROMPT,
                 num_inference_steps=SD_INFERENCE_STEPS,
-                guidance_scale=0.0,
+                guidance_scale=SD_GUIDANCE_SCALE,
             ).images[0]
 
             if not is_blank_image(image):
