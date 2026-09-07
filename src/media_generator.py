@@ -20,11 +20,19 @@ from PIL import Image
 logger = logging.getLogger(__name__)
 
 # Output directory for BFF static assets
-ASSETS_DIR = "/Users/abhishek/Code/Arya/bff/src/main/resources/static/assets"
+DEFAULT_ASSETS_DIR = (
+    "/Users/abhishek/Code/Arya/bff/src/main/resources/static/assets"
+    if os.path.exists("/Users/abhishek/Code/Arya/bff/src/main/resources/static/assets")
+    else os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "assets")
+)
+ASSETS_DIR = os.getenv("ASSETS_DIR", DEFAULT_ASSETS_DIR)
 BFF_ASSETS_URL_PREFIX = "/assets"
 
 # Create the directory if it doesn't exist
-os.makedirs(ASSETS_DIR, exist_ok=True)
+try:
+    os.makedirs(ASSETS_DIR, exist_ok=True)
+except OSError:
+    pass
 
 # ── Validation thresholds ────────────────────────────────────────────
 # An image is considered "blank" if its pixel standard deviation is below
@@ -33,10 +41,6 @@ BLANK_IMAGE_STD_THRESHOLD = 5.0
 
 # Maximum retries for image generation when a blank is detected.
 MAX_IMAGE_RETRIES = 2
-
-# Inference steps — higher = better quality, slower.  30 is a good
-# balance for SD 1.5 on Apple Silicon.
-DEFAULT_INFERENCE_STEPS = 30
 
 
 def slugify(text: str) -> str:
@@ -107,14 +111,82 @@ def is_blank_image(image: "Image.Image") -> bool:
     return is_blank
 
 
+# ── Prompt transformation ────────────────────────────────────────────
+# Style prefix injected before every prompt to steer SDXL Turbo toward
+# clean educational visuals without text rendering.
+_STYLE_PREFIX = (
+    "flat vector educational illustration for children, "
+    "clean simple design, no text, no labels, no letters, no words, no writing, "
+    "no numbers, no captions, no annotations, "
+)
+
+# Quality suffix appended after the subject matter.
+_QUALITY_SUFFIX = (
+    ", vibrant colors, white background, sharp lines, "
+    "high quality digital art, simple shapes"
+)
+
+# Alternative style tokens used on retry to get a different result.
+_RETRY_STYLE_PREFIX = (
+    "colorful storybook illustration for young children, "
+    "cute friendly style, no text, no labels, no letters, no words, "
+    "no writing, no numbers, no captions, "
+)
+
+# Phrases in LLM descriptions that ask for text rendering — strip them.
+_TEXT_INSTRUCTION_PATTERNS = [
+    r"(?i)\blabel{1,2}ed?\b",
+    r"(?i)\bwith\s+(the\s+)?(word|text|label|letter|number|caption|annotation|title)s?\b",
+    r"(?i)\bsaying\b",
+    r"(?i)\bthat\s+(says?|reads?)\b",
+    r"(?i)\b(word|text|label|caption|annotation|title)s?\s+(showing|reading|saying)\b",
+    r"(?i)\bwrite\b",
+    r"(?i)\bwritten\b",
+    r"""(?i)["'][^"']{1,30}["']""",  # quoted text like "petal" or 'petal'
+]
+
+
+def _transform_prompt_for_diffusion(
+    raw_description: str,
+    *,
+    use_retry_style: bool = False,
+) -> str:
+    """
+    Transform an LLM-generated image description into an SDXL-optimized prompt.
+
+    This does three things:
+    1. Strips instructions that ask the model to render text (labels, captions, etc.)
+    2. Prepends style tokens for clean educational illustrations
+    3. Appends quality tokens for sharp, vibrant output
+
+    The retry variant uses a different visual style to get varied results on
+    blank-image retries.
+    """
+    cleaned = raw_description.strip()
+
+    # Remove text-rendering instructions
+    for pattern in _TEXT_INSTRUCTION_PATTERNS:
+        cleaned = re.sub(pattern, "", cleaned)
+
+    # Collapse whitespace left behind by removals
+    cleaned = re.sub(r"\s{2,}", " ", cleaned).strip(" ,.")
+
+    if not cleaned:
+        cleaned = "educational diagram"
+
+    prefix = _RETRY_STYLE_PREFIX if use_retry_style else _STYLE_PREFIX
+    return f"{prefix}{cleaned}{_QUALITY_SUFFIX}"
+
+
 class MediaGenerator:
     def __init__(self):
         self.image_pipeline = None
 
     def _load_image_pipeline(self):
-        """Lazy load the Stable Diffusion pipeline to save memory."""
+        """Lazy load the SDXL Turbo pipeline to save memory."""
         if self.image_pipeline is None:
-            logger.info("Loading Stable Diffusion pipeline...")
+            from .config import SD_MODEL_ID
+            logger.info("Loading Stable Diffusion pipeline (%s)...", SD_MODEL_ID)
             from diffusers import AutoPipelineForText2Image
             import torch
 
@@ -124,14 +196,17 @@ class MediaGenerator:
             # IMPORTANT: Always use float32 on MPS — float16 causes blank /
             # black images on Apple Silicon due to numerical instability.
             self.image_pipeline = AutoPipelineForText2Image.from_pretrained(
-                "runwayml/stable-diffusion-v1-5",
+                SD_MODEL_ID,
                 torch_dtype=torch.float32,
                 safety_checker=None,  # avoid unnecessary memory usage
             )
             self.image_pipeline = self.image_pipeline.to(device)
             # Reduce memory usage
             self.image_pipeline.enable_attention_slicing()
-            logger.info("Stable Diffusion pipeline loaded on %s (float32).", device)
+            logger.info(
+                "Stable Diffusion pipeline loaded on %s (float32): %s",
+                device, SD_MODEL_ID,
+            )
 
     def generate_image(
         self,
@@ -145,15 +220,20 @@ class MediaGenerator:
         Generates an image from a text prompt and saves it to the structured
         static assets folder.
 
+        The raw LLM description is transformed into an SD-optimized prompt
+        that avoids text rendering and uses educational illustration style tokens.
+
         Returns the URL path to the generated image, or None if generation
         failed after retries (so the lesson doesn't link a broken image).
         """
+        from .config import SD_INFERENCE_STEPS
+
         self._load_image_pipeline()
         logger.info("Generating image for prompt: %s", prompt)
 
-        # Use the model's exact generated description directly
-        full_prompt = prompt.strip()
-        negative_prompt = "blurry, distorted, deformed, low quality, dark"
+        # Transform the LLM description into an SD-optimized prompt
+        full_prompt = _transform_prompt_for_diffusion(prompt)
+        logger.debug("Transformed SD prompt: %s", full_prompt)
 
         asset_dir = _build_asset_dir(subject, unit_name, topic_name)
         url_prefix = _build_url_prefix(subject, unit_name, topic_name)
@@ -161,10 +241,12 @@ class MediaGenerator:
         for attempt in range(1, MAX_IMAGE_RETRIES + 1):
             logger.info("Image generation attempt %d/%d", attempt, MAX_IMAGE_RETRIES)
 
+            # SDXL Turbo: guidance_scale=0.0 (distilled without CFG),
+            # no negative_prompt (incompatible with turbo distillation).
             image = self.image_pipeline(
                 full_prompt,
-                negative_prompt=negative_prompt,
-                num_inference_steps=DEFAULT_INFERENCE_STEPS,
+                num_inference_steps=SD_INFERENCE_STEPS,
+                guidance_scale=0.0,
             ).images[0]
 
             if not is_blank_image(image):
@@ -175,14 +257,13 @@ class MediaGenerator:
                 logger.info("Saved image to %s", filepath)
                 return f"{url_prefix}/{filename}"
 
-            # Blank image — modify prompt for next attempt
+            # Blank image — switch to retry style for next attempt
             logger.warning(
-                "Attempt %d produced a blank image, retrying with enhanced prompt",
+                "Attempt %d produced a blank image, retrying with alternate style",
                 attempt,
             )
-            full_prompt = (
-                f"clear detailed educational textbook diagram for children, {prompt}, "
-                f"highly detailed, sharp, clean vector illustration, informative visual aid"
+            full_prompt = _transform_prompt_for_diffusion(
+                prompt, use_retry_style=True,
             )
 
         logger.error(
