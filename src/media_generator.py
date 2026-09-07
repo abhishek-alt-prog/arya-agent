@@ -112,31 +112,37 @@ def is_blank_image(image: "Image.Image") -> bool:
 
 
 # ── Prompt transformation ────────────────────────────────────────────
-# Style prefix injected before every prompt to steer SD 3.5 toward
-# clean educational infographic diagrams with legible English labels.
+# Style prefix for charming, kid-friendly storybook illustrations.
 _STYLE_PREFIX = (
-    "clear educational diagram illustration for children, "
-    "clean vector infographic style, legible text labels in English, "
-    "white background, high quality, sharp lines, "
+    "whimsical children's book illustration for 7 year olds, "
+    "vibrant playful art style, cute friendly, clean composition, "
+    "soft warm lighting, vibrant pastel colors, clean white background, "
+    "high quality digital art, "
 )
 
 # Quality suffix appended after the subject matter.
 _QUALITY_SUFFIX = (
-    ", vibrant colors, sharp typography, clean design, simple shapes"
+    ", simple shapes, charming, kid-friendly, sharp focus"
 )
 
-# Alternative style tokens used on retry to get a different result.
+# Alternative style tokens used on retry.
 _RETRY_STYLE_PREFIX = (
-    "colorful educational textbook diagram for children, "
-    "high contrast, clear bold English labels, "
-    "white background, sharp details, "
+    "colorful 3d claymation storybook illustration for children, "
+    "cute friendly, bright colors, clean studio lighting, "
+    "white background, "
 )
 
-# Negative prompt to discourage garbled/distorted lettering.
-DEFAULT_NEGATIVE_PROMPT = (
-    "blurry, distorted text, misspelled words, illegible letters, "
-    "ugly handwriting, deformed, low quality, dark background, watermark"
-)
+# Text and label phrases to strip from the diffusion prompt so the AI
+# creates pure visual art without rendering alien pseudo-text or crude signposts.
+_STRIP_TEXT_PATTERNS = [
+    r"""(?i)\blabels?:\s*[^,.\n]+(,\s*[^,.\n]+)*""",
+    r"""(?i)\bwith\s+labels?\b[^,.]*""",
+    r"""(?i)\blabeled?\s+with\b[^,.]*""",
+    r"""(?i)\blabel{1,2}ed?\b""",
+    r"""(?i)[`'‘’“"][a-zA-Z0-9\s-]{1,25}['‘’”"]""",
+    r"""(?i)\bshowing\s+labels?\b""",
+    r"""(?i)\bwith\s+(the\s+)?(word|text|caption|annotation)s?\b[^,.]*""",
+]
 
 
 def _transform_prompt_for_diffusion(
@@ -145,27 +151,23 @@ def _transform_prompt_for_diffusion(
     use_retry_style: bool = False,
 ) -> str:
     """
-    Transform an LLM-generated image description into an SD 3.5-optimized prompt.
+    Transform an LLM-generated image description into a clean storybook prompt.
 
-    This does three things:
-    1. Normalizes single quotes / smart quotes around label words into double quotes
-       for SD 3.5's T5 text encoder.
-    2. Prepends style tokens for clean educational illustrations with clear typography.
-    3. Appends quality tokens for sharp lines and vibrant colors.
-
-    The retry variant uses a higher-contrast textbook diagram style.
+    Strips out label instructions so the AI focuses entirely on drawing
+    charming, friendly visual elements. Text labels are overlaid cleanly
+    post-generation by ImageAnnotator.
     """
     cleaned = raw_description.strip()
 
-    # Normalize smart quotes and single quotes around labels into double quotes
-    # e.g., 'Petal' or ‘Petal’ -> "Petal"
-    cleaned = re.sub(r"[`'‘’“](\b[\w\s-]{1,25}\b)['‘’”]", r'"\1"', cleaned)
+    # Strip text/label instructions from diffusion prompt
+    for pattern in _STRIP_TEXT_PATTERNS:
+        cleaned = re.sub(pattern, "", cleaned)
 
-    # Collapse excessive whitespace
-    cleaned = re.sub(r"\s{2,}", " ", cleaned).strip(" ,.")
+    # Collapse excessive whitespace and cleanup loose punctuation
+    cleaned = re.sub(r"\s{2,}", " ", cleaned).strip(" ,.-")
 
     if not cleaned:
-        cleaned = "educational diagram with clear labels"
+        cleaned = "cute educational illustration for children"
 
     prefix = _RETRY_STYLE_PREFIX if use_retry_style else _STYLE_PREFIX
     return f"{prefix}{cleaned}{_QUALITY_SUFFIX}"
@@ -219,18 +221,24 @@ class MediaGenerator:
         Generates an image from a text prompt and saves it to the structured
         static assets folder.
 
-        The raw LLM description is transformed into an SD-optimized prompt
-        with clear typography styling and double-quoted labels for legible rendering.
+        1. Generates charming, clean storybook art via diffusion (no fuzzy text).
+        2. Automatically overlays crisp, candy-colored pill badges for diagram labels.
 
         Returns the URL path to the generated image, or None if generation
         failed after retries (so the lesson doesn't link a broken image).
         """
         from .config import SD_INFERENCE_STEPS, SD_GUIDANCE_SCALE
+        from .image_annotator import extract_labels, overlay_labels
 
         self._load_image_pipeline()
         logger.info("Generating image for prompt: %s", prompt)
 
-        # Transform the LLM description into an SD-optimized prompt
+        # Extract labels for educational badge overlay
+        labels = extract_labels(prompt)
+        if labels:
+            logger.info("Extracted educational labels for overlay: %s", labels)
+
+        # Transform description into a pure visual art prompt (no text artifacts)
         full_prompt = _transform_prompt_for_diffusion(prompt)
         logger.debug("Transformed SD prompt: %s", full_prompt)
 
@@ -242,13 +250,16 @@ class MediaGenerator:
 
             image = self.image_pipeline(
                 full_prompt,
-                negative_prompt=DEFAULT_NEGATIVE_PROMPT,
                 num_inference_steps=SD_INFERENCE_STEPS,
                 guidance_scale=SD_GUIDANCE_SCALE,
             ).images[0]
 
             if not is_blank_image(image):
-                # Good image — save and return
+                # Overlay crisp educational pill badges if labels were requested
+                if labels:
+                    image = overlay_labels(image, labels)
+                    logger.info("Applied educational pill badges to image (%d labels)", len(labels))
+
                 filename = f"{prefix}_{uuid4().hex[:8]}.png"
                 filepath = os.path.join(asset_dir, filename)
                 image.save(filepath)

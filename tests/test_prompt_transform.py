@@ -1,9 +1,9 @@
 """
 Tests for the prompt transformation layer in media_generator.
 
-Verifies that LLM-generated image descriptions are correctly transformed
-into SD 3.5-optimized prompts that promote clear typography and normalize
-quoted labels.
+Verifies that LLM-generated image descriptions are transformed into
+clean, kid-friendly storybook illustration prompts while stripping out
+label text instructions so the AI generates clean art without pseudo-text.
 """
 
 import pytest
@@ -14,27 +14,16 @@ from src.media_generator import _transform_prompt_for_diffusion
 # ── Basic transformation ─────────────────────────────────────────────
 
 class TestPromptTransformBasic:
-    """Core prompt transformation behavior for SD 3.5."""
+    """Core prompt transformation behavior for charming storybook art."""
 
-    def test_adds_style_prefix(self):
-        result = _transform_prompt_for_diffusion("a flower diagram")
-        assert result.startswith("clear educational diagram illustration")
+    def test_adds_storybook_style_prefix(self):
+        result = _transform_prompt_for_diffusion("a friendly owl")
+        assert result.startswith("whimsical children's book illustration")
 
     def test_adds_quality_suffix(self):
-        result = _transform_prompt_for_diffusion("a flower diagram")
-        assert "vibrant colors" in result
-        assert "sharp typography" in result
-
-    def test_promotes_legible_text(self):
-        result = _transform_prompt_for_diffusion("a simple plant")
-        assert "legible text labels in English" in result
-
-    def test_no_negative_words_in_positive_prompt(self):
-        # Ensure the 'pink elephant' anti-text tokens are NOT in the positive prompt
-        result = _transform_prompt_for_diffusion("a simple plant")
-        assert "no text" not in result
-        assert "no labels" not in result
-        assert "no words" not in result
+        result = _transform_prompt_for_diffusion("a friendly owl")
+        assert "kid-friendly" in result
+        assert "charming" in result
 
     def test_preserves_core_subject(self):
         result = _transform_prompt_for_diffusion("a flower with pink petals and green stem")
@@ -44,46 +33,37 @@ class TestPromptTransformBasic:
 
     def test_retry_style_uses_alternate_prefix(self):
         result = _transform_prompt_for_diffusion("a flower", use_retry_style=True)
-        assert result.startswith("colorful educational textbook diagram")
-
-    def test_retry_style_includes_bold_labels(self):
-        result = _transform_prompt_for_diffusion("a flower", use_retry_style=True)
-        assert "clear bold English labels" in result
+        assert result.startswith("colorful 3d claymation storybook illustration")
 
 
-# ── Label Quote Normalization ────────────────────────────────────────
+# ── Label Stripping from Diffusion Prompt ─────────────────────────────
 
-class TestLabelQuoteNormalization:
-    """Ensures label words are formatted in double quotes for SD 3.5's T5 encoder."""
+class TestLabelStrippingForDiffusion:
+    """Ensures label instructions are removed from the AI prompt so the AI doesn't draw pseudo-text."""
 
-    def test_normalizes_single_quotes(self):
+    def test_strips_quoted_labels(self):
         result = _transform_prompt_for_diffusion(
-            "a diagram of a plant with labels 'Flower', 'Stem', 'Roots'"
+            'a diagram of a plant with labels "Flower", "Stem", "Roots"'
         )
-        assert '"Flower"' in result
-        assert '"Stem"' in result
-        assert '"Roots"' in result
+        assert '"Flower"' not in result
+        assert '"Stem"' not in result
+        assert '"Roots"' not in result
+        assert "plant" in result
 
-    def test_normalizes_smart_quotes(self):
+    def test_strips_single_quoted_labels(self):
         result = _transform_prompt_for_diffusion(
-            "a diagram with ‘Petal’ and ‘Leaf’"
+            "a diagram of a plant with labels 'Petal', 'Leaf'"
         )
-        assert '"Petal"' in result
-        assert '"Leaf"' in result
+        assert "'Petal'" not in result
+        assert "'Leaf'" not in result
+        assert "plant" in result
 
-    def test_preserves_existing_double_quotes(self):
+    def test_strips_labels_colon_phrase(self):
         result = _transform_prompt_for_diffusion(
-            'a diagram with "Heart" and "Lungs"'
+            "a flower. Labels: petal, stem, root"
         )
-        assert '"Heart"' in result
-        assert '"Lungs"' in result
-
-    def test_preserves_quoted_multiword_labels(self):
-        result = _transform_prompt_for_diffusion(
-            "a map with 'North America' and 'South America'"
-        )
-        assert '"North America"' in result
-        assert '"South America"' in result
+        assert "Labels:" not in result
+        assert "flower" in result
 
 
 # ── Edge cases ───────────────────────────────────────────────────────
@@ -93,11 +73,15 @@ class TestEdgeCases:
 
     def test_empty_string_gets_fallback(self):
         result = _transform_prompt_for_diffusion("")
-        assert "educational diagram with clear labels" in result
+        assert "cute educational illustration for children" in result
 
     def test_whitespace_only_gets_fallback(self):
         result = _transform_prompt_for_diffusion("   ")
-        assert "educational diagram with clear labels" in result
+        assert "cute educational illustration for children" in result
+
+    def test_all_labels_stripped_gets_fallback(self):
+        result = _transform_prompt_for_diffusion('"Leaf"')
+        assert "cute educational illustration for children" in result
 
     def test_no_double_spaces(self):
         result = _transform_prompt_for_diffusion(
